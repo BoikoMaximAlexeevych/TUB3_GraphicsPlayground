@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://deadq55apdg8n"]
+
+[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://sway.gdshader" id="1_ww8lw"]
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://bush.png" id="2_le68i"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("1_ww8lw")
+shader_parameter/albedo_texture = ExtResource("2_le68i")
+shader_parameter/sway_speed = 1.16200005193512
+shader_parameter/sway_strength = 0.022000001045
+shader_parameter/noise_scale = 6.2530002495175
+shader_parameter/darken = 0.86800004123
+shader_parameter/time_offset = 0.0

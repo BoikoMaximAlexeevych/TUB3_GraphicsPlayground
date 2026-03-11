@@ -1,0 +1,426 @@
+[gd_scene format=3 uid="uid://bpwf8n63ks2t6"]
+
+[ext_resource type="Script" uid="uid://cvqko4f1mnxam" path="res://camera_3d.gd" id="1_a0tk4"]
+[ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://ground.png" id="1_a202f"]
+[ext_resource type="Texture2D" uid="uid://b5eatr0qonhur" path="res://concrete_base.png" id="1_jka67"]
+[ext_resource type="Material" uid="uid://cy366lepce6ss" path="res://ground_material.tres" id="1_tereu"]
+[ext_resource type="Texture2D" uid="uid://64v2krwfa5xk" path="res://birch.png" id="1_wc5p8"]
+[ext_resource type="Texture2D" uid="uid://cy3x1maj0qy2i" path="res://concrete_top.png" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://lwh5kttqwqqx" path="res://wire.gd" id="2_jsk3o"]
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://bush.png" id="2_noarx"]
+[ext_resource type="Texture2D" uid="uid://bv1cdqxb78bjo" path="res://barrel.png" id="3_i5arm"]
+[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://sway.gdshader" id="7_4arys"]
+[ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://tree.gd" id="8_6iypd"]
+[ext_resource type="Material" uid="uid://deadq55apdg8n" path="res://tree_mat.tres" id="8_cdqbm"]
+[ext_resource type="Material" uid="uid://cypa5a0if380" path="res://leaf.tres" id="13_imku0"]
+
+[sub_resource type="Environment" id="Environment_tereu"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.8862745, 0.6627451, 1)
+ambient_light_energy = 1.32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6iypd"]
+lightmap_size_hint = Vector2i(352, 352)
+material = ExtResource("1_tereu")
+size = Vector2(70, 70)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
+render_priority = 5
+transparency = 4
+albedo_texture = ExtResource("1_wc5p8")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_imku0"]
+load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tereu"]
+render_priority = 2
+shader = ExtResource("7_4arys")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_imku0")
+shader_parameter/sway_speed = 2.56200011843512
+shader_parameter/sway_strength = 0.0170000008075
+shader_parameter/noise_scale = 5.0
+shader_parameter/darken = 0.22000001045
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqbm"]
+render_priority = 3
+shader = ExtResource("7_4arys")
+shader_parameter/albedo_texture = ExtResource("2_noarx")
+shader_parameter/sway_speed = 2.40000011074012
+shader_parameter/sway_strength = 0.01
+shader_parameter/noise_scale = 5.0
+shader_parameter/darken = 0.626000029735
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wlxy5"]
+frequency = 0.0064
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3v7ru"]
+noise = SubResource("FastNoiseLite_wlxy5")
+as_normal_map = true
+bump_strength = 9.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcnuu"]
+transparency = 1
+albedo_texture = ExtResource("2_noarx")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_3v7ru")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_imku0"]
+noise_type = 3
+frequency = 0.0267
+fractal_octaves = 1
+fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wlxy5"]
+noise = SubResource("FastNoiseLite_imku0")
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v7ru"]
+transparency = 1
+albedo_texture = ExtResource("2_noarx")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_wlxy5")
+
+[sub_resource type="Environment" id="Environment_cdqbm"]
+background_mode = 2
+background_color = Color(0.254701, 0.47905457, 0.8693785, 1)
+background_energy_multiplier = 1.71
+ambient_light_source = 2
+ambient_light_color = Color(0.5051738, 0.59866035, 0.74647796, 1)
+ambient_light_energy = 0.85
+reflected_light_source = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.47151524, 0.564628, 0.6368409, 1)
+fog_sun_scatter = 0.03
+fog_density = 1.0
+fog_depth_curve = 0.46651667
+volumetric_fog_detail_spread = 0.93303305
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_imku0"]
+dof_blur_near_enabled = true
+dof_blur_near_distance = 7.0
+dof_blur_near_transition = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
+material = ExtResource("13_imku0")
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_imku0"]
+_data = [Vector2(0.04887218, 1), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.26530617), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Node3D" type="Node3D" unique_id=1102209248]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1957260514]
+environment = SubResource("Environment_tereu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1038878194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0325336, 0.07601738, -4.780369)
+layers = 7
+gi_mode = 0
+mesh = SubResource("PlaneMesh_6iypd")
+
+[node name="Blur" type="Node3D" parent="." unique_id=927611246]
+transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, 5.3290705e-15, -3.4969105e-08, 0.51, 0.5088693, -0.053242058, -1.4836452e-09, -0.67943263, -0.23538709, 5.5038977)
+
+[node name="Wire" type="Sprite3D" parent="Blur" unique_id=1304671346]
+transform = Transform3D(-0.6581382, -0.5338819, 4.0233581e-07, 3.2081895, -0.10952223, 4.932521e-07, 2.1997559e-07, -4.4878448e-08, -5.99, 12.63029, 1.5705569, 6.9947133)
+visible = false
+cast_shadow = 2
+shaded = true
+alpha_cut = 2
+render_priority = 10
+texture = ExtResource("1_wc5p8")
+script = ExtResource("2_jsk3o")
+
+[node name="Wire2" type="Sprite3D" parent="Blur" unique_id=1494451841]
+transform = Transform3D(-3.402007, 0.37174422, 0, -4.9871554, -0.25358674, 0, 0, 0, 11.041, -1.4522152, 2.1491451, 7.4873977)
+visible = false
+material_override = SubResource("StandardMaterial3D_tereu")
+alpha_cut = 2
+texture = ExtResource("1_wc5p8")
+script = ExtResource("2_jsk3o")
+
+[node name="Props" type="Node3D" parent="." unique_id=1255685942]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5419736, 0)
+
+[node name="Concrete" type="Sprite3D" parent="Props" unique_id=87480587]
+transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, -0.5088693, 0.053242058, -2.0809162e-08, -2.2243379e-08, -3.264182e-08, 0.51, -0.67943263, -5.5038977, -0.40695095)
+alpha_cut = 1
+texture = ExtResource("1_jka67")
+
+[node name="Sprite3D" type="Sprite3D" parent="Props/Concrete" unique_id=1059618665]
+transform = Transform3D(1, 1.1920929e-07, 2.6645353e-15, 0, 1, 5.551115e-15, 1.7763568e-15, -1.110223e-14, 1, 0.0388422, 0.009173393, 0.25276184)
+alpha_cut = 1
+texture = ExtResource("2_i5arm")
+
+[node name="Barrel" type="Sprite3D" parent="Props" unique_id=2122778628]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -2.8446589, -7.5703626, -0.14311346)
+alpha_cut = 1
+texture = ExtResource("3_i5arm")
+
+[node name="Trees" type="Node3D" parent="." unique_id=1425313640]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.1502953, 2.8026047, -3.024715)
+
+[node name="Tree2" type="Sprite3D" parent="Trees" unique_id=185102308]
+transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964191e-09, -2.6520139e-08, -8.964193e-09, 1, -9.317369, -7.4494963, -0.5200393)
+material_override = ExtResource("8_cdqbm")
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree2" unique_id=1616442990]
+transform = Transform3D(0.69552916, 0.6323281, 2.7639953e-08, -0.6323281, 0.69552916, -1.0686156e-08, -2.7639938e-08, -1.0686158e-08, 0.94, -0.41041398, -0.25716496, 0.181)
+material_override = SubResource("ShaderMaterial_tereu")
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree2/Tree" unique_id=1965469298]
+transform = Transform3D(0.5660454, 0.42670134, 2.2735346e-08, -0.34902385, 0.6920224, -6.445874e-09, -1.5256308e-08, -5.288106e-09, 0.991, -0.053, 0.072, 0.625)
+material_override = SubResource("ShaderMaterial_cdqbm")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Tree3" type="Sprite3D" parent="Trees" unique_id=504379628]
+transform = Transform3D(0.64161026, 0.7670307, 3.3527982e-08, -0.7670307, 0.64161026, -1.5665712e-08, -3.352798e-08, -1.5665712e-08, 1, 2.2190247, -14.821193, 0.05482769)
+modulate = Color(0.38928655, 0.38928664, 0.38928658, 1)
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree3" unique_id=2003571755]
+transform = Transform3D(0.73992467, 0.6726897, 2.9404198e-08, -0.6726897, 0.73992467, -1.1368255e-08, -2.9404202e-08, -1.1368255e-08, 1, -0.4161167, -0.25777054, -0.6216123)
+modulate = Color(0.38928655, 0.38928664, 0.38928658, 1)
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree3/Tree" unique_id=444837236]
+transform = Transform3D(0.6852128, 0.42250252, 1.8468167e-08, -0.42250252, 0.6852128, -5.2360556e-09, -1.846816e-08, -5.236069e-09, 0.805, -0.05326557, 0.07211161, 0.91973233)
+modulate = Color(0, 0, 0, 1)
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Tree4" type="Sprite3D" parent="Trees" unique_id=772463884]
+transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964193e-09, -2.6520139e-08, -8.964193e-09, 1, 4.5956154, -1.1350484, 0.9278891)
+material_override = ExtResource("8_cdqbm")
+cast_shadow = 2
+shaded = true
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree4" unique_id=1158519154]
+transform = Transform3D(0.69552916, 0.6323281, 2.7639953e-08, -0.6323281, 0.69552916, -1.0686156e-08, -2.7639938e-08, -1.0686158e-08, 0.94, -0.029323101, 0.037124157, 0.181)
+material_override = SubResource("ShaderMaterial_tereu")
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Tree" type="Sprite3D" parent="Trees/Tree4/Tree" unique_id=523848317]
+transform = Transform3D(0.5660454, 0.42670134, 2.2735346e-08, -0.34902385, 0.6920224, -6.445874e-09, -1.5256308e-08, -5.288106e-09, 0.991, -0.053, 0.072, 0.625)
+material_override = SubResource("ShaderMaterial_cdqbm")
+cast_shadow = 2
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_imku0")
+script = ExtResource("8_6iypd")
+
+[node name="Bushes" type="Node3D" parent="." unique_id=612706391]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.37674832, 0)
+
+[node name="Bush" type="Sprite3D" parent="Bushes" unique_id=1482844403]
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, -3.708, 0, 0)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush" unique_id=2102001920]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707231e-08, 2.6691344e-08, -1.1707245e-08, 0.82999986, -0.2538538, -1.28655735e-08, 0.29433042)
+visibility_range_end = 527.21
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush2" type="Sprite3D" parent="Bushes" unique_id=1021047704]
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 4.337864, -1.5044801, -5.9604645e-08)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush2" unique_id=1283593765]
+transform = Transform3D(0.38642156, -0.7345601, -3.2108634e-08, 0.7345601, 0.38642156, -1.9389415e-08, 3.2108623e-08, -1.938943e-08, 0.82999986, -0.25385284, 0, 0.49882436)
+visibility_range_end = 527.21
+double_sided = false
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush3" type="Sprite3D" parent="Bushes" unique_id=1266021185]
+transform = Transform3D(0.3690899, 0.10904305, 0.010354746, -0.10900017, 0.3692352, -0.003057978, -0.0107968515, -6.824834e-10, 0.38484854, -4.048928, -11.668955, 0.04192421)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush3" unique_id=1806484837]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707234e-08, 2.669135e-08, -1.1707245e-08, 0.8299999, -0.2538538, -1.2865581e-08, 0.29433042)
+material_override = SubResource("StandardMaterial3D_tcnuu")
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush4" type="Sprite3D" parent="Bushes" unique_id=1876108427]
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, -7.1169415, -12.439066, 0.39871162)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush4" unique_id=1079477067]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707234e-08, 2.669135e-08, -1.1707243e-08, 0.8299999, -0.2538538, 0, 0.60687065)
+visibility_range_end = 527.21
+modulate = Color(0.80505586, 0.79877794, 0.041048385, 1)
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush5" type="Sprite3D" parent="Bushes" unique_id=1032505986]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -6.737841, -14.466919, 0.3190953)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+modulate = Color(0.5395387, 0.74976796, 0.96386784, 1)
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush5" unique_id=349431717]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691355e-08, 0.6106271, 0.5621695, -1.1707231e-08, 2.669135e-08, -1.1707241e-08, 0.8299999, -0.2538538, 0, 0.29433048)
+material_override = SubResource("StandardMaterial3D_3v7ru")
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush6" type="Sprite3D" parent="Bushes" unique_id=195825293]
+transform = Transform3D(0.3690899, 0.10904305, 0.010354746, -0.10900017, 0.3692352, -0.003057978, -0.0107968515, -6.824834e-10, 0.38484854, -4.4255524, -13.541396, -0.12461245)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush6" unique_id=1974049543]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707234e-08, 2.669135e-08, -1.1707245e-08, 0.8299999, -0.2538538, -1.2865581e-08, 0.29433042)
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush7" type="Sprite3D" parent="Bushes" unique_id=121694094]
+transform = Transform3D(0.3690899, 0.10904305, 0.010354746, -0.10900017, 0.3692352, -0.003057978, -0.0107968515, -6.824834e-10, 0.38484854, -6.267214, -10.526938, -0.1246123)
+extra_cull_margin = 16384.0
+visibility_range_end = 527.21
+modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Bush" type="Sprite3D" parent="Bushes/Bush7" unique_id=1913191018]
+transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707234e-08, 2.669135e-08, -1.1707245e-08, 0.8299999, -0.2538538, -1.2865581e-08, 0.29433042)
+visibility_range_end = 527.21
+shaded = true
+double_sided = false
+texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.66485214, 3.6574821)
+environment = SubResource("Environment_cdqbm")
+attributes = SubResource("CameraAttributesPractical_imku0")
+script = ExtResource("1_a0tk4")
+
+[node name="Ground2" type="Sprite3D" parent="." unique_id=1436603024]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.13477421, 10.761397)
+visible = false
+alpha_cut = 1
+texture = ExtResource("1_a202f")
+
+[node name="Ground" type="Sprite3D" parent="." unique_id=427278326]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.13477421, 0)
+visible = false
+alpha_cut = 1
+texture = ExtResource("1_a202f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1256911013]
+transform = Transform3D(0.616184, -0.63209593, 0.46986386, 0, 0.5965751, 0.8025573, -0.78760225, -0.49452296, 0.36760002, 22.848745, 17.321619, 13.954807)
+light_color = Color(1, 0.9372549, 0.28235295, 1)
+light_energy = 1.317
+light_angular_distance = 5.35
+shadow_enabled = true
+shadow_blur = 0.396
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
+transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 9.034186, 3.8550005, -0.8294101)
+lifetime = 3.0
+mesh = SubResource("QuadMesh_cdqbm")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(-3, 0, 0)
+spread = 23.14
+flatness = 0.23
+gravity = Vector3(0, -2.255, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -82.3
+angular_velocity_max = 51.41
+radial_accel_max = 0.5
+damping_max = 1.0
+angle_max = 216.0
+scale_amount_curve = SubResource("Curve_imku0")
+hue_variation_min = 0.27
+hue_variation_max = 0.27
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=805819033]
+transform = Transform3D(1.0000001, 0, 0, 0, -4.371138e-08, -1.0000001, 0, 0.9999998, -4.3711392e-08, 6.1782894, 3.9789133, 12.1007805)
+lifetime = 3.0
+mesh = SubResource("QuadMesh_cdqbm")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(-3, 0, 0)
+spread = 23.14
+flatness = 0.23
+gravity = Vector3(0, -2.255, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -82.3
+angular_velocity_max = 51.41
+radial_accel_max = 0.5
+damping_max = 1.0
+angle_max = 216.0
+scale_amount_curve = SubResource("Curve_imku0")
+hue_variation_min = 0.27
+hue_variation_max = 0.27

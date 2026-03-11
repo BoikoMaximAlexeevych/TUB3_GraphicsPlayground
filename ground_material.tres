@@ -1,0 +1,65 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cy366lepce6ss"]
+
+[ext_resource type="Shader" uid="uid://mikakffg1fhw" path="res://ground.gdshader" id="1_vepyt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cdqbm"]
+noise_type = 3
+frequency = 0.0803
+fractal_octaves = 7
+fractal_gain = 0.985
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_imku0"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_cdqbm")
+seamless = true
+seamless_blend_skirt = 0.203
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_imku0"]
+noise_type = 3
+frequency = 0.0243
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wlxy5"]
+noise = SubResource("FastNoiseLite_imku0")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vepyt"]
+noise_type = 3
+fractal_octaves = 6
+fractal_gain = 0.755
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_imowx"]
+noise = SubResource("FastNoiseLite_vepyt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_imowx"]
+noise_type = 3
+seed = 6
+frequency = 0.0074
+fractal_octaves = 6
+fractal_lacunarity = 2.165
+fractal_gain = 1.095
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w23mk"]
+noise = SubResource("FastNoiseLite_imowx")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vepyt")
+shader_parameter/noise = SubResource("NoiseTexture2D_imku0")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_wlxy5")
+shader_parameter/noise3 = SubResource("NoiseTexture2D_imowx")
+shader_parameter/soil_noise = SubResource("NoiseTexture2D_w23mk")
+shader_parameter/base_color = Color(0.28238004, 0.24763212, 0.23250756, 1)
+shader_parameter/soil_color2 = Color(0.39619792, 0.3471324, 0.28450266, 1)
+shader_parameter/color2 = Color(0.119164236, 0.2308295, 0.1421457, 1)
+shader_parameter/color3 = Color(0.22023642, 0.38282952, 0.24462596, 1)
+shader_parameter/color4 = Color(0.3787447, 0.54042494, 0.30736226, 1)
+shader_parameter/tr1 = 0.44400002109
+shader_parameter/tr2 = 0.52400002489
+shader_parameter/tr3 = 0.5550000263625
+shader_parameter/tr_soil = 0.53200002527
+shader_parameter/sway_speed = 0.29500001075262
+shader_parameter/sway_strength = 0.0030000001425
+shader_parameter/noise_scale = 19.538000880555

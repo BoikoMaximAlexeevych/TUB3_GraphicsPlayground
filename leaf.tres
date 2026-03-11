@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cypa5a0if380"]
+
+[ext_resource type="Texture2D" uid="uid://cfts5hdywx5ax" path="res://leaf.png" id="1_ooxnh"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_ooxnh")
+stencil_flags = 2
