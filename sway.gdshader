@@ -1,5 +1,6 @@
 shader_type spatial;
-render_mode depth_prepass_alpha, depth_draw_always;
+render_mode depth_prepass_alpha, depth_test_default;
+
 uniform sampler2D albedo_texture : source_color;
 
 // The speed of the horizontal flame movement (sway)

@@ -102,7 +102,8 @@ volumetric_fog_detail_spread = 0.93303305
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_imku0"]
 dof_blur_near_enabled = true
 dof_blur_near_distance = 7.0
-dof_blur_near_transition = 2.0
+dof_blur_near_transition = 2.5
+dof_blur_amount = 0.21
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 material = ExtResource("13_imku0")
@@ -203,22 +204,27 @@ alpha_cut = 1
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Tree4" type="Sprite3D" parent="Trees" unique_id=772463884]
-transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964193e-09, -2.6520139e-08, -8.964193e-09, 1, 4.5956154, -1.1350484, 0.9278891)
+transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964193e-09, -2.6520139e-08, -8.964193e-09, 1, 4.5956154, -1.1350482, -0.100809336)
 material_override = ExtResource("8_cdqbm")
 cast_shadow = 2
+transparent = false
 shaded = true
 alpha_cut = 1
+alpha_scissor_threshold = 0.6
 texture = SubResource("CompressedTexture2D_imku0")
 script = ExtResource("8_6iypd")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree4" unique_id=1158519154]
-transform = Transform3D(0.69552916, 0.6323281, 2.7639953e-08, -0.6323281, 0.69552916, -1.0686156e-08, -2.7639938e-08, -1.0686158e-08, 0.94, -0.029323101, 0.037124157, 0.181)
+transform = Transform3D(0.65483344, 0.5785131, 2.7639947e-08, -0.5953303, 0.6363353, -1.0686149e-08, -2.6022711e-08, -9.7767e-09, 0.94, -0.029322147, 0.03712511, 0.36913037)
 material_override = SubResource("ShaderMaterial_tereu")
+transparent = false
+alpha_hash_scale = 0.93
+alpha_antialiasing_mode = 1
 texture = SubResource("CompressedTexture2D_imku0")
 script = ExtResource("8_6iypd")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree4/Tree" unique_id=523848317]
-transform = Transform3D(0.5660454, 0.42670134, 2.2735346e-08, -0.34902385, 0.6920224, -6.445874e-09, -1.5256308e-08, -5.288106e-09, 0.991, -0.053, 0.072, 0.625)
+transform = Transform3D(0.56604534, 0.4267013, 2.2735346e-08, -0.34902385, 0.6920223, -6.4458794e-09, -1.5256308e-08, -5.2881064e-09, 0.991, -0.053000093, 0.07199955, 0.7412143)
 material_override = SubResource("ShaderMaterial_cdqbm")
 cast_shadow = 2
 alpha_antialiasing_edge = 0.07
@@ -346,7 +352,7 @@ double_sided = false
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.66485214, 3.6574821)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.6049714, 8.423014, 1.7258358)
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
 script = ExtResource("1_a0tk4")
@@ -372,7 +378,7 @@ shadow_enabled = true
 shadow_blur = 0.396
 
 [node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
-transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 9.034186, 3.8550005, -0.8294101)
+transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 9.034186, 3.5928946, -0.8294101)
 lifetime = 3.0
 mesh = SubResource("QuadMesh_cdqbm")
 emission_shape = 6

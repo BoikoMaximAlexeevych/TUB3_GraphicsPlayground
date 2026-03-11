@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cfts5hdywx5ax" path="res://leaf.png" id="1_ooxnh"]
 
 [resource]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("1_ooxnh")
+disable_receive_shadows = true
 stencil_flags = 2
