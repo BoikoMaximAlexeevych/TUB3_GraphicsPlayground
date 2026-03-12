@@ -75,6 +75,17 @@ albedo_texture = ExtResource("2_noarx")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_3v7ru")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imku0"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("7_4arys")
+shader_parameter/albedo_texture = ExtResource("2_noarx")
+shader_parameter/sway_speed = 1.16200005193512
+shader_parameter/sway_strength = 0.022000001045
+shader_parameter/noise_scale = 6.2530002495175
+shader_parameter/darken = 0.0870000041325
+shader_parameter/time_offset = 0.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_imku0"]
 noise_type = 3
 frequency = 0.0267
@@ -107,6 +118,12 @@ ambient_light_color = Color(0.19399983, 0.45820695, 0.88750297, 1)
 ambient_light_sky_contribution = 0.21
 ambient_light_energy = 2.37
 reflected_light_source = 1
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.47
+glow_strength = 0.42
+glow_bloom = 0.86
+glow_hdr_luminance_cap = 13.79
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.47151524, 0.564628, 0.6368409, 1)
@@ -122,6 +139,97 @@ dof_blur_near_enabled = true
 dof_blur_near_distance = 7.0
 dof_blur_near_transition = 2.5
 dof_blur_amount = 0.11
+
+[sub_resource type="Gradient" id="Gradient_imku0"]
+offsets = PackedFloat32Array(0, 0.11682243, 0.7383177, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.9411765, 0.8627451, 0.31764707, 1, 0.17153925, 2.502799e-05, 0.7999259, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlxy5"]
+gradient = SubResource("Gradient_imku0")
+
+[sub_resource type="Curve" id="Curve_3v7ru"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.32584274), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tcnuu"]
+curve = SubResource("Curve_3v7ru")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tuemg"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(1, 1.07, 1)
+emission_shape = 3
+emission_box_extents = Vector3(7.43, 7.825, 1)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-0.64, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, -0.62, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 0.7
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_tcnuu")
+color_ramp = SubResource("GradientTexture1D_wlxy5")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_i0g27"]
+lightmap_size_hint = Vector2i(7, 7)
+material = ExtResource("13_imku0")
+orientation = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imku0"]
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = -31.650002
+radial_accel_max = -11.510002
+tangential_accel_min = 4.319998
+tangential_accel_max = 24.459997
+attractor_interaction_enabled = false
+scale_min = 0.06
+scale_max = 0.099999994
+turbulence_enabled = true
+turbulence_noise_strength = 0.8
+turbulence_noise_scale = 1.5
+turbulence_noise_speed = Vector3(0.445, 0.31, 0.475)
+
+[sub_resource type="Gradient" id="Gradient_wlxy5"]
+offsets = PackedFloat32Array(0, 0.14678898, 0.63761467)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.88235295, 0.58431375, 0.8392157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3v7ru"]
+gradient = SubResource("Gradient_wlxy5")
+fill = 1
+fill_from = Vector2(0.508547, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuemg"]
+render_priority = 4
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_3v7ru")
+emission_enabled = true
+emission = Color(1, 0.9019608, 0.34901962, 1)
+emission_energy_multiplier = 6.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
+material = SubResource("StandardMaterial3D_tuemg")
+orientation = 1
 
 [node name="Node3D" type="Node3D" unique_id=1102209248]
 
@@ -346,13 +454,14 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush5" type="Sprite3D" parent="Bushes" unique_id=1032505986]
-transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -6.737841, -14.466919, 0.3190953)
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -5.6581025, -14.466919, 0.09517035)
+material_override = SubResource("ShaderMaterial_imku0")
 extra_cull_margin = 16384.0
 visibility_range_end = 527.21
 modulate = Color(0.5395387, 0.74976796, 0.96386784, 1)
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush5" unique_id=349431717]
@@ -361,7 +470,7 @@ material_override = SubResource("StandardMaterial3D_3v7ru")
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush6" type="Sprite3D" parent="Bushes" unique_id=195825293]
@@ -401,7 +510,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.91608095, 8.423014, 1.5680904)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.91608095, 0.31181526, 1.5680904)
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
 near = 0.034
@@ -422,23 +531,28 @@ texture = ExtResource("1_a202f")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1256911013]
 transform = Transform3D(0.616184, -0.63209593, 0.46986386, 0, 0.5965751, 0.8025573, -0.78760225, -0.49452296, 0.36760002, 22.848745, 17.321619, 13.954807)
 light_color = Color(1, 0.91764706, 0.28235295, 1)
-light_energy = 1.622
+light_energy = 0.425
 light_angular_distance = 5.35
 shadow_enabled = true
 shadow_blur = 0.396
 
-[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
-transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 9.034186, 3.5928946, -0.8294101)
-amount = 30
+[node name="Leaves" type="GPUParticles3D" parent="." unique_id=421851852]
+transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 8.104245, 2.982799, 5.461123)
+amount = 50
 lifetime = 3.0
+visibility_aabb = AABB(-10.525, -11.135, -4, 21.995, 21.695, 8)
+process_material = SubResource("ParticleProcessMaterial_tuemg")
+draw_pass_1 = SubResource("QuadMesh_i0g27")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
+transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 24.512426, 3.5928946, 5.461123)
+visible = false
+amount = 50
+lifetime = 3.0
+speed_scale = 0.6
 mesh = SubResource("QuadMesh_cdqbm")
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 3.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(11.04, 10.505, 1.135)
 particle_flag_rotate_y = true
 direction = Vector3(-3, 0, 0)
 spread = 23.14
@@ -455,29 +569,23 @@ scale_amount_curve = SubResource("Curve_imku0")
 hue_variation_min = 0.27
 hue_variation_max = 0.27
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=805819033]
-transform = Transform3D(1.0000001, 0, 0, 0, -4.371138e-08, -1.0000001, 0, 0.9999998, -4.3711392e-08, 6.1782894, 3.9789133, 12.1007805)
-lifetime = 3.0
-mesh = SubResource("QuadMesh_cdqbm")
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 3.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-particle_flag_align_y = true
-particle_flag_rotate_y = true
-direction = Vector3(-3, 0, 0)
-spread = 23.14
-flatness = 0.23
-gravity = Vector3(0, -2.255, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-angular_velocity_min = -82.3
-angular_velocity_max = 51.41
-radial_accel_max = 0.5
-damping_max = 1.0
-angle_max = 216.0
-scale_amount_curve = SubResource("Curve_imku0")
-hue_variation_min = 0.27
-hue_variation_max = 0.27
+[node name="Fireflies3" type="GPUParticles3D" parent="." unique_id=1300963236]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, -4.557986, 0.84593606, 15.8153105)
+amount = 30
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_imku0")
+draw_pass_1 = SubResource("QuadMesh_wlxy5")
+
+[node name="Fireflies2" type="GPUParticles3D" parent="." unique_id=1987666471]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -3.6192102, 2.3941011, 7.921359)
+amount = 30
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_imku0")
+draw_pass_1 = SubResource("QuadMesh_wlxy5")
+
+[node name="Fireflies" type="GPUParticles3D" parent="." unique_id=793602947]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.607231, 1.1650753, 0.63988566)
+amount = 30
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_imku0")
+draw_pass_1 = SubResource("QuadMesh_wlxy5")
