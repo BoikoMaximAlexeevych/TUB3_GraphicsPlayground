@@ -11,5 +11,5 @@ shader_parameter/albedo_texture = ExtResource("2_le68i")
 shader_parameter/sway_speed = 1.16200005193512
 shader_parameter/sway_strength = 0.022000001045
 shader_parameter/noise_scale = 6.2530002495175
-shader_parameter/darken = 0.86800004123
+shader_parameter/darken = 0.5650000268375
 shader_parameter/time_offset = 0.0

@@ -39,7 +39,7 @@ shader_parameter/albedo_texture = SubResource("CompressedTexture2D_imku0")
 shader_parameter/sway_speed = 2.56200011843512
 shader_parameter/sway_strength = 0.0170000008075
 shader_parameter/noise_scale = 5.0
-shader_parameter/darken = 0.22000001045
+shader_parameter/darken = 0.2400000114
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqbm"]
@@ -49,7 +49,7 @@ shader_parameter/albedo_texture = ExtResource("2_noarx")
 shader_parameter/sway_speed = 2.40000011074012
 shader_parameter/sway_strength = 0.01
 shader_parameter/noise_scale = 5.0
-shader_parameter/darken = 0.626000029735
+shader_parameter/darken = 0.0
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
@@ -161,20 +161,29 @@ emission_shape = 3
 emission_box_extents = Vector3(7.43, 7.825, 1)
 angle_min = -720.0
 angle_max = 720.0
-direction = Vector3(-0.64, 0, 0)
+direction = Vector3(-1.69, 0, 0)
 initial_velocity_min = 3.0
-initial_velocity_max = 8.0
+initial_velocity_max = 10.679999
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 9.49949e-08
-gravity = Vector3(0, -0.62, 0)
+gravity = Vector3(0, -0.22, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 54.569996
 radial_accel_min = -2.2351742e-06
 radial_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 0.99999774
+damping_max = 1.0
 scale_min = 0.7
 scale_max = 1.1
 scale_curve = SubResource("CurveTexture_tcnuu")
 color_ramp = SubResource("GradientTexture1D_wlxy5")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 0.6
+turbulence_noise_speed = Vector3(0.17, 0.135, 0.095)
 
 [sub_resource type="QuadMesh" id="QuadMesh_i0g27"]
 lightmap_size_hint = Vector2i(7, 7)
@@ -510,7 +519,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.91608095, 0.31181526, 1.5680904)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.916081, 8.942251, 0.56809044)
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
 near = 0.034
@@ -538,7 +547,7 @@ shadow_blur = 0.396
 
 [node name="Leaves" type="GPUParticles3D" parent="." unique_id=421851852]
 transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 8.104245, 2.982799, 5.461123)
-amount = 50
+amount = 30
 lifetime = 3.0
 visibility_aabb = AABB(-10.525, -11.135, -4, 21.995, 21.695, 8)
 process_material = SubResource("ParticleProcessMaterial_tuemg")
