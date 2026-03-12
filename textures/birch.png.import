@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy3x1maj0qy2i"
-path.s3tc="res://.godot/imported/concrete_top.png-cca8b164fff8bb97804e1299bd2fb678.s3tc.ctex"
+uid="uid://64v2krwfa5xk"
+path.s3tc="res://.godot/imported/birch.png-a42e72e44460f2b5857b2e5a32f326f4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://concrete_top.png"
-dest_files=["res://.godot/imported/concrete_top.png-cca8b164fff8bb97804e1299bd2fb678.s3tc.ctex"]
+source_file="res://textures/birch.png"
+dest_files=["res://.godot/imported/birch.png-a42e72e44460f2b5857b2e5a32f326f4.s3tc.ctex"]
 
 [params]
 

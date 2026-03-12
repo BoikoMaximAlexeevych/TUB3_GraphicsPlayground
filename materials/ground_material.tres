@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://cy366lepce6ss"]
 
-[ext_resource type="Shader" uid="uid://mikakffg1fhw" path="res://ground.gdshader" id="1_vepyt"]
+[ext_resource type="Shader" uid="uid://mikakffg1fhw" path="res://shaders/ground.gdshader" id="1_vepyt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cdqbm"]
 noise_type = 3

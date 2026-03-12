@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://deadq55apdg8n"]
 
-[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://sway.gdshader" id="1_ww8lw"]
-[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://bush.png" id="2_le68i"]
+[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://shaders/sway.gdshader" id="1_ww8lw"]
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="2_le68i"]
 
 [resource]
 resource_local_to_scene = true

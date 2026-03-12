@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv1cdqxb78bjo"
-path.s3tc="res://.godot/imported/barrel.png-79e8405a33659a250c9c4bbf849c9bf7.s3tc.ctex"
+uid="uid://cy3x1maj0qy2i"
+path.s3tc="res://.godot/imported/concrete_top.png-2d67c342e0e26db67694819d2ad77732.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://barrel.png"
-dest_files=["res://.godot/imported/barrel.png-79e8405a33659a250c9c4bbf849c9bf7.s3tc.ctex"]
+source_file="res://textures/concrete_top.png"
+dest_files=["res://.godot/imported/concrete_top.png-2d67c342e0e26db67694819d2ad77732.s3tc.ctex"]
 
 [params]
 

@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://bpwf8n63ks2t6"]
 
-[ext_resource type="Script" uid="uid://cvqko4f1mnxam" path="res://camera_3d.gd" id="1_a0tk4"]
-[ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://ground.png" id="1_a202f"]
-[ext_resource type="Texture2D" uid="uid://b5eatr0qonhur" path="res://concrete_base.png" id="1_jka67"]
-[ext_resource type="Material" uid="uid://cy366lepce6ss" path="res://ground_material.tres" id="1_tereu"]
-[ext_resource type="Texture2D" uid="uid://64v2krwfa5xk" path="res://birch.png" id="1_wc5p8"]
-[ext_resource type="Texture2D" uid="uid://cy3x1maj0qy2i" path="res://concrete_top.png" id="2_i5arm"]
-[ext_resource type="Script" uid="uid://lwh5kttqwqqx" path="res://wire.gd" id="2_jsk3o"]
-[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://bush.png" id="2_noarx"]
-[ext_resource type="Texture2D" uid="uid://bv1cdqxb78bjo" path="res://barrel.png" id="3_i5arm"]
-[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://sway.gdshader" id="7_4arys"]
-[ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://tree.gd" id="8_6iypd"]
-[ext_resource type="Material" uid="uid://deadq55apdg8n" path="res://tree_mat.tres" id="8_cdqbm"]
-[ext_resource type="Material" uid="uid://cypa5a0if380" path="res://leaf.tres" id="13_imku0"]
+[ext_resource type="Material" uid="uid://cy366lepce6ss" path="res://materials/ground_material.tres" id="1_umdqk"]
+[ext_resource type="Texture2D" uid="uid://64v2krwfa5xk" path="res://textures/birch.png" id="2_6l3rs"]
+[ext_resource type="Script" uid="uid://lwh5kttqwqqx" path="res://scripts/wire.gd" id="3_2u1at"]
+[ext_resource type="Texture2D" uid="uid://b5eatr0qonhur" path="res://textures/concrete_base.png" id="4_dn2ro"]
+[ext_resource type="Texture2D" uid="uid://cy3x1maj0qy2i" path="res://textures/concrete_top.png" id="5_hup21"]
+[ext_resource type="Texture2D" uid="uid://bv1cdqxb78bjo" path="res://textures/barrel.png" id="6_4cwgp"]
+[ext_resource type="Material" uid="uid://deadq55apdg8n" path="res://materials/tree_mat.tres" id="7_dvicb"]
+[ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://scripts/tree.gd" id="8_bvueo"]
+[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://shaders/sway.gdshader" id="9_d7w74"]
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="10_0814m"]
+[ext_resource type="Material" uid="uid://cypa5a0if380" path="res://materials/leaf.tres" id="11_yagcb"]
+[ext_resource type="Script" uid="uid://cvqko4f1mnxam" path="res://scripts/camera_3d.gd" id="12_bnfrd"]
+[ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://textures/ground.png" id="13_05pwu"]
 
 [sub_resource type="Environment" id="Environment_tereu"]
 ambient_light_source = 2
@@ -21,20 +21,20 @@ ambient_light_energy = 1.32
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6iypd"]
 lightmap_size_hint = Vector2i(352, 352)
-material = ExtResource("1_tereu")
+material = ExtResource("1_umdqk")
 size = Vector2(70, 70)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
 render_priority = 5
 transparency = 4
-albedo_texture = ExtResource("1_wc5p8")
+albedo_texture = ExtResource("2_6l3rs")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_imku0"]
 load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tereu"]
 render_priority = 2
-shader = ExtResource("7_4arys")
+shader = ExtResource("9_d7w74")
 shader_parameter/albedo_texture = SubResource("CompressedTexture2D_imku0")
 shader_parameter/sway_speed = 2.56200011843512
 shader_parameter/sway_strength = 0.0170000008075
@@ -44,8 +44,8 @@ shader_parameter/time_offset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqbm"]
 render_priority = 3
-shader = ExtResource("7_4arys")
-shader_parameter/albedo_texture = ExtResource("2_noarx")
+shader = ExtResource("9_d7w74")
+shader_parameter/albedo_texture = ExtResource("10_0814m")
 shader_parameter/sway_speed = 2.40000011074012
 shader_parameter/sway_strength = 0.01
 shader_parameter/noise_scale = 5.0
@@ -53,7 +53,7 @@ shader_parameter/darken = 0.0
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
-material = ExtResource("13_imku0")
+material = ExtResource("11_yagcb")
 orientation = 1
 
 [sub_resource type="Curve" id="Curve_imku0"]
@@ -71,15 +71,15 @@ bump_strength = 9.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcnuu"]
 transparency = 1
-albedo_texture = ExtResource("2_noarx")
+albedo_texture = ExtResource("10_0814m")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_3v7ru")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_imku0"]
 resource_local_to_scene = true
 render_priority = 1
-shader = ExtResource("7_4arys")
-shader_parameter/albedo_texture = ExtResource("2_noarx")
+shader = ExtResource("9_d7w74")
+shader_parameter/albedo_texture = ExtResource("10_0814m")
 shader_parameter/sway_speed = 1.16200005193512
 shader_parameter/sway_strength = 0.022000001045
 shader_parameter/noise_scale = 6.2530002495175
@@ -98,7 +98,7 @@ as_normal_map = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v7ru"]
 transparency = 1
-albedo_texture = ExtResource("2_noarx")
+albedo_texture = ExtResource("10_0814m")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_wlxy5")
 
@@ -187,7 +187,7 @@ turbulence_noise_speed = Vector3(0.17, 0.135, 0.095)
 
 [sub_resource type="QuadMesh" id="QuadMesh_i0g27"]
 lightmap_size_hint = Vector2i(7, 7)
-material = ExtResource("13_imku0")
+material = ExtResource("11_yagcb")
 orientation = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imku0"]
@@ -261,16 +261,16 @@ cast_shadow = 2
 shaded = true
 alpha_cut = 2
 render_priority = 10
-texture = ExtResource("1_wc5p8")
-script = ExtResource("2_jsk3o")
+texture = ExtResource("2_6l3rs")
+script = ExtResource("3_2u1at")
 
 [node name="Wire2" type="Sprite3D" parent="Blur" unique_id=1494451841]
 transform = Transform3D(-3.402007, 0.37174422, 0, -4.9871554, -0.25358674, 0, 0, 0, 11.041, -1.4522152, 2.1491451, 7.4873977)
 visible = false
 material_override = SubResource("StandardMaterial3D_tereu")
 alpha_cut = 2
-texture = ExtResource("1_wc5p8")
-script = ExtResource("2_jsk3o")
+texture = ExtResource("2_6l3rs")
+script = ExtResource("3_2u1at")
 
 [node name="Props" type="Node3D" parent="." unique_id=1255685942]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5419736, 0)
@@ -278,39 +278,39 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 [node name="Concrete" type="Sprite3D" parent="Props" unique_id=87480587]
 transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, -0.5088693, 0.053242058, -2.0809162e-08, -2.2243379e-08, -3.264182e-08, 0.51, -0.67943263, -5.5038977, -0.40695095)
 alpha_cut = 1
-texture = ExtResource("1_jka67")
+texture = ExtResource("4_dn2ro")
 
 [node name="Sprite3D" type="Sprite3D" parent="Props/Concrete" unique_id=1059618665]
 transform = Transform3D(1, 1.1920929e-07, 2.6645353e-15, 0, 1, 5.551115e-15, 1.7763568e-15, -1.110223e-14, 1, 0.0388422, 0.009173393, 0.25276184)
 alpha_cut = 1
-texture = ExtResource("2_i5arm")
+texture = ExtResource("5_hup21")
 
 [node name="Barrel" type="Sprite3D" parent="Props" unique_id=2122778628]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -2.8446589, -7.5703626, -0.14311346)
 alpha_cut = 1
-texture = ExtResource("3_i5arm")
+texture = ExtResource("6_4cwgp")
 
 [node name="Trees" type="Node3D" parent="." unique_id=1425313640]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.1502953, 2.8026047, -3.024715)
 
 [node name="Tree2" type="Sprite3D" parent="Trees" unique_id=185102308]
 transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964191e-09, -2.6520139e-08, -8.964193e-09, 1, -9.317369, -7.4494963, -0.5200393)
-material_override = ExtResource("8_cdqbm")
+material_override = ExtResource("7_dvicb")
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree2" unique_id=1616442990]
 transform = Transform3D(0.69552916, 0.6323281, 2.7639953e-08, -0.6323281, 0.69552916, -1.0686156e-08, -2.7639938e-08, -1.0686158e-08, 0.94, -0.41041398, -0.25716496, 0.181)
 material_override = SubResource("ShaderMaterial_tereu")
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree2/Tree" unique_id=1965469298]
 transform = Transform3D(0.5660454, 0.42670134, 2.2735346e-08, -0.34902385, 0.6920224, -6.445874e-09, -1.5256308e-08, -5.288106e-09, 0.991, -0.053, 0.072, 0.625)
 material_override = SubResource("ShaderMaterial_cdqbm")
 alpha_antialiasing_edge = 0.07
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Tree3" type="Sprite3D" parent="Trees" unique_id=504379628]
 transform = Transform3D(0.64161026, 0.7670307, 3.3527982e-08, -0.7670307, 0.64161026, -1.5665712e-08, -3.352798e-08, -1.5665712e-08, 1, 2.2190247, -14.821193, 0.05482769)
@@ -332,14 +332,14 @@ texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Tree4" type="Sprite3D" parent="Trees" unique_id=772463884]
 transform = Transform3D(0.7949232, 0.6067101, 2.652014e-08, -0.6067101, 0.7949232, -8.964193e-09, -2.6520139e-08, -8.964193e-09, 1, 4.5956154, -1.1350482, -0.100809336)
-material_override = ExtResource("8_cdqbm")
+material_override = ExtResource("7_dvicb")
 cast_shadow = 2
 transparent = false
 shaded = true
 alpha_cut = 1
 alpha_scissor_threshold = 0.6
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree4" unique_id=1158519154]
 transform = Transform3D(0.65483344, 0.5785131, 2.7639947e-08, -0.5953303, 0.6363353, -1.0686149e-08, -2.6022711e-08, -9.7767e-09, 0.94, -0.029322147, 0.03712511, 0.36913037)
@@ -348,7 +348,7 @@ transparent = false
 alpha_hash_scale = 0.93
 alpha_antialiasing_mode = 1
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Tree" type="Sprite3D" parent="Trees/Tree4/Tree" unique_id=523848317]
 transform = Transform3D(0.56604534, 0.4267013, 2.2735346e-08, -0.34902385, 0.6920223, -6.4458794e-09, -1.5256308e-08, -5.2881064e-09, 0.991, -0.053000093, 0.07199955, 0.7412143)
@@ -356,7 +356,7 @@ material_override = SubResource("ShaderMaterial_cdqbm")
 cast_shadow = 2
 alpha_antialiasing_edge = 0.07
 texture = SubResource("CompressedTexture2D_imku0")
-script = ExtResource("8_6iypd")
+script = ExtResource("8_bvueo")
 
 [node name="Bushes" type="Node3D" parent="." unique_id=612706391]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.37674832, 0)
@@ -523,19 +523,19 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.91
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
 near = 0.034
-script = ExtResource("1_a0tk4")
+script = ExtResource("12_bnfrd")
 
 [node name="Ground2" type="Sprite3D" parent="." unique_id=1436603024]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.13477421, 10.761397)
 visible = false
 alpha_cut = 1
-texture = ExtResource("1_a202f")
+texture = ExtResource("13_05pwu")
 
 [node name="Ground" type="Sprite3D" parent="." unique_id=427278326]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.13477421, 0)
 visible = false
 alpha_cut = 1
-texture = ExtResource("1_a202f")
+texture = ExtResource("13_05pwu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1256911013]
 transform = Transform3D(0.616184, -0.63209593, 0.46986386, 0, 0.5965751, 0.8025573, -0.78760225, -0.49452296, 0.36760002, 22.848745, 17.321619, 13.954807)
