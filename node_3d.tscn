@@ -52,6 +52,14 @@ shader_parameter/noise_scale = 5.0
 shader_parameter/darken = 0.626000029735
 shader_parameter/time_offset = 0.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
+material = ExtResource("13_imku0")
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_imku0"]
+_data = [Vector2(0.04887218, 1), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.26530617), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wlxy5"]
 frequency = 0.0064
 fractal_octaves = 4
@@ -83,13 +91,21 @@ albedo_texture = ExtResource("2_noarx")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_wlxy5")
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tuemg"]
+
+[sub_resource type="Sky" id="Sky_i0g27"]
+sky_material = SubResource("PanoramaSkyMaterial_tuemg")
+process_mode = 1
+
 [sub_resource type="Environment" id="Environment_cdqbm"]
 background_mode = 2
 background_color = Color(0.254701, 0.47905457, 0.8693785, 1)
 background_energy_multiplier = 1.71
-ambient_light_source = 2
-ambient_light_color = Color(0.5051738, 0.59866035, 0.74647796, 1)
-ambient_light_energy = 0.85
+sky = SubResource("Sky_i0g27")
+ambient_light_source = 3
+ambient_light_color = Color(0.19399983, 0.45820695, 0.88750297, 1)
+ambient_light_sky_contribution = 0.21
+ambient_light_energy = 2.37
 reflected_light_source = 1
 fog_enabled = true
 fog_mode = 1
@@ -98,20 +114,14 @@ fog_sun_scatter = 0.03
 fog_density = 1.0
 fog_depth_curve = 0.46651667
 volumetric_fog_detail_spread = 0.93303305
+adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_imku0"]
+exposure_multiplier = 1.453
 dof_blur_near_enabled = true
 dof_blur_near_distance = 7.0
 dof_blur_near_transition = 2.5
-dof_blur_amount = 0.21
-
-[sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
-material = ExtResource("13_imku0")
-orientation = 1
-
-[sub_resource type="Curve" id="Curve_imku0"]
-_data = [Vector2(0.04887218, 1), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.26530617), 0.0, 0.0, 0, 0]
-point_count = 2
+dof_blur_amount = 0.11
 
 [node name="Node3D" type="Node3D" unique_id=1102209248]
 
@@ -235,33 +245,69 @@ script = ExtResource("8_6iypd")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.37674832, 0)
 
 [node name="Bush" type="Sprite3D" parent="Bushes" unique_id=1482844403]
-transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, -3.708, 0, 0)
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, -3.708, -1.5768933, -5.9604645e-08)
 extra_cull_margin = 16384.0
 visibility_range_end = 527.21
+shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush" unique_id=2102001920]
 transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707231e-08, 2.6691344e-08, -1.1707245e-08, 0.82999986, -0.2538538, -1.28655735e-08, 0.29433042)
 visibility_range_end = 527.21
+shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush2" type="Sprite3D" parent="Bushes" unique_id=1021047704]
-transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 4.337864, -1.5044801, -5.9604645e-08)
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 4.337864, -0.51014876, -2.9802322e-08)
 extra_cull_margin = 16384.0
 visibility_range_end = 527.21
+shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush2" unique_id=1283593765]
 transform = Transform3D(0.38642156, -0.7345601, -3.2108634e-08, 0.7345601, 0.38642156, -1.9389415e-08, 3.2108623e-08, -1.938943e-08, 0.82999986, -0.25385284, 0, 0.49882436)
 visibility_range_end = 527.21
+shaded = true
 double_sided = false
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="Bushes/Bush2" unique_id=1732511106]
+transform = Transform3D(2.5974033, 0, 0, 0, -2.5974023, 2.2707212e-07, 0, -2.2707212e-07, -2.5974023, -1.1691036, -0.75676775, 1.2158535)
+amount = 10
+lifetime = 3.0
+mesh = SubResource("QuadMesh_cdqbm")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(-3, 0, 0)
+spread = 23.14
+flatness = 0.23
+gravity = Vector3(0, -2.255, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -82.3
+angular_velocity_max = 51.41
+radial_accel_max = 0.5
+damping_max = 1.0
+angle_max = 216.0
+scale_amount_min = 0.5
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_imku0")
+color = Color(0.9100346, 0.9062975, 1.540184e-06, 1)
+hue_variation_min = 0.27
+hue_variation_max = 0.27
 
 [node name="Bush3" type="Sprite3D" parent="Bushes" unique_id=1266021185]
 transform = Transform3D(0.3690899, 0.10904305, 0.010354746, -0.10900017, 0.3692352, -0.003057978, -0.0107968515, -6.824834e-10, 0.38484854, -4.048928, -11.668955, 0.04192421)
@@ -269,7 +315,7 @@ extra_cull_margin = 16384.0
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush3" unique_id=1806484837]
@@ -278,6 +324,7 @@ material_override = SubResource("StandardMaterial3D_tcnuu")
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush4" type="Sprite3D" parent="Bushes" unique_id=1876108427]
@@ -286,7 +333,7 @@ extra_cull_margin = 16384.0
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush4" unique_id=1079477067]
@@ -295,7 +342,7 @@ visibility_range_end = 527.21
 modulate = Color(0.80505586, 0.79877794, 0.041048385, 1)
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush5" type="Sprite3D" parent="Bushes" unique_id=1032505986]
@@ -324,7 +371,7 @@ visibility_range_end = 527.21
 modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush6" unique_id=1974049543]
@@ -332,6 +379,7 @@ transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush7" type="Sprite3D" parent="Bushes" unique_id=121694094]
@@ -341,7 +389,7 @@ visibility_range_end = 527.21
 modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush7" unique_id=1913191018]
@@ -349,12 +397,14 @@ transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
+alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.6049714, 8.423014, 1.7258358)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.91608095, 8.423014, 1.5680904)
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
+near = 0.034
 script = ExtResource("1_a0tk4")
 
 [node name="Ground2" type="Sprite3D" parent="." unique_id=1436603024]
@@ -371,14 +421,15 @@ texture = ExtResource("1_a202f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1256911013]
 transform = Transform3D(0.616184, -0.63209593, 0.46986386, 0, 0.5965751, 0.8025573, -0.78760225, -0.49452296, 0.36760002, 22.848745, 17.321619, 13.954807)
-light_color = Color(1, 0.9372549, 0.28235295, 1)
-light_energy = 1.317
+light_color = Color(1, 0.91764706, 0.28235295, 1)
+light_energy = 1.622
 light_angular_distance = 5.35
 shadow_enabled = true
 shadow_blur = 0.396
 
 [node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
 transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 9.034186, 3.5928946, -0.8294101)
+amount = 30
 lifetime = 3.0
 mesh = SubResource("QuadMesh_cdqbm")
 emission_shape = 6
