@@ -1,0 +1,28 @@
+[gd_resource type="Environment" format=3 uid="uid://nbjteg7id1bq"]
+
+[ext_resource type="Sky" uid="uid://6hd5mf01okxi" path="res://materials/Camera_Sky.tres" id="1_5xcic"]
+
+[resource]
+background_mode = 2
+background_color = Color(0.254701, 0.47905457, 0.8693785, 1)
+background_energy_multiplier = 1.71
+sky = ExtResource("1_5xcic")
+ambient_light_source = 3
+ambient_light_color = Color(0.19399983, 0.45820695, 0.88750297, 1)
+ambient_light_sky_contribution = 0.21
+ambient_light_energy = 2.37
+reflected_light_source = 1
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.47
+glow_strength = 0.42
+glow_bloom = 1.0
+glow_hdr_luminance_cap = 13.79
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.47151524, 0.564628, 0.6368409, 1)
+fog_sun_scatter = 0.03
+fog_density = 1.0
+fog_depth_curve = 0.46651667
+volumetric_fog_detail_spread = 0.93303305
+adjustment_enabled = true

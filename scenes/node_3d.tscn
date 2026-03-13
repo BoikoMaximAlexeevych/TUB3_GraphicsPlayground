@@ -2,10 +2,12 @@
 
 [ext_resource type="Material" uid="uid://cy366lepce6ss" path="res://materials/ground_material.tres" id="1_umdqk"]
 [ext_resource type="Texture2D" uid="uid://64v2krwfa5xk" path="res://textures/birch.png" id="2_6l3rs"]
+[ext_resource type="CameraAttributesPractical" uid="uid://deoru3ci1a1jf" path="res://materials/CameraAttributes.tres" id="2_bvueo"]
 [ext_resource type="Script" uid="uid://lwh5kttqwqqx" path="res://scripts/wire.gd" id="3_2u1at"]
 [ext_resource type="Texture2D" uid="uid://b5eatr0qonhur" path="res://textures/concrete_base.png" id="4_dn2ro"]
 [ext_resource type="Texture2D" uid="uid://cy3x1maj0qy2i" path="res://textures/concrete_top.png" id="5_hup21"]
 [ext_resource type="Texture2D" uid="uid://bv1cdqxb78bjo" path="res://textures/barrel.png" id="6_4cwgp"]
+[ext_resource type="Material" uid="uid://c1wwoicq2ks4f" path="res://materials/alien_particle_mat.tres" id="7_4cwgp"]
 [ext_resource type="Material" uid="uid://deadq55apdg8n" path="res://materials/tree_mat.tres" id="7_dvicb"]
 [ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://scripts/tree.gd" id="8_bvueo"]
 [ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://shaders/sway.gdshader" id="9_d7w74"]
@@ -13,7 +15,9 @@
 [ext_resource type="Material" uid="uid://dshm1krp47k0f" path="res://materials/elka_mat.tres" id="11_6l3rs"]
 [ext_resource type="Material" uid="uid://cypa5a0if380" path="res://materials/leaf.tres" id="11_yagcb"]
 [ext_resource type="Script" uid="uid://cvqko4f1mnxam" path="res://scripts/camera_3d.gd" id="12_bnfrd"]
+[ext_resource type="Material" uid="uid://raume4ja4wwu" path="res://materials/bush_mat.tres" id="13_2u1at"]
 [ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://textures/ground.png" id="13_05pwu"]
+[ext_resource type="Environment" uid="uid://nbjteg7id1bq" path="res://materials/CameraEnvironment.tres" id="17_0814m"]
 
 [sub_resource type="Environment" id="Environment_tereu"]
 ambient_light_source = 2
@@ -23,12 +27,48 @@ ambient_light_energy = 1.32
 [sub_resource type="PlaneMesh" id="PlaneMesh_6iypd"]
 lightmap_size_hint = Vector2i(352, 352)
 material = ExtResource("1_umdqk")
+add_uv2 = true
 size = Vector2(70, 70)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
 render_priority = 5
 transparency = 4
 albedo_texture = ExtResource("2_6l3rs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u1at"]
+transparency = 1
+specular_mode = 2
+emission_enabled = true
+emission = Color(0.25568193, 0.88983786, 0.9631519, 1)
+emission_energy_multiplier = 9.52
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2u1at"]
+lightmap_size_hint = Vector2i(17, 14)
+material = SubResource("StandardMaterial3D_2u1at")
+add_uv2 = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hup21"]
+particle_flag_rotate_y = true
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -93.7
+radial_accel_max = -81.08
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 9.3499975
+damping_max = 27.928001
+scale_min = 0.08
+scale_max = 0.099999994
+
+[sub_resource type="Curve" id="Curve_4cwgp"]
+_data = [Vector2(0.03676471, 0), 0.0, 0.0, 0, 0, Vector2(0.4963235, 0.8610686), 0.0, 0.0, 0, 0, Vector2(0.9264705, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_bvueo"]
+material = ExtResource("7_4cwgp")
+section_length = 1.0
+section_segments = 4
+curve = SubResource("Curve_4cwgp")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_imku0"]
 load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
@@ -54,7 +94,9 @@ shader_parameter/darken = 0.0
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2u1at"]
+lightmap_size_hint = Vector2i(42, 42)
 material = ExtResource("11_6l3rs")
+add_uv2 = true
 size = Vector2(8, 8)
 orientation = 2
 
@@ -65,86 +107,6 @@ orientation = 1
 [sub_resource type="Curve" id="Curve_imku0"]
 _data = [Vector2(0.04887218, 1), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.26530617), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wlxy5"]
-frequency = 0.0064
-fractal_octaves = 4
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3v7ru"]
-noise = SubResource("FastNoiseLite_wlxy5")
-as_normal_map = true
-bump_strength = 9.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcnuu"]
-transparency = 1
-albedo_texture = ExtResource("10_0814m")
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_3v7ru")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_imku0"]
-resource_local_to_scene = true
-render_priority = 1
-shader = ExtResource("9_d7w74")
-shader_parameter/albedo_texture = ExtResource("10_0814m")
-shader_parameter/sway_speed = 1.16200005193512
-shader_parameter/sway_strength = 0.022000001045
-shader_parameter/noise_scale = 6.2530002495175
-shader_parameter/darken = 0.0870000041325
-shader_parameter/time_offset = 0.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_imku0"]
-noise_type = 3
-frequency = 0.0267
-fractal_octaves = 1
-fractal_gain = 0.7
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wlxy5"]
-noise = SubResource("FastNoiseLite_imku0")
-as_normal_map = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v7ru"]
-transparency = 1
-albedo_texture = ExtResource("10_0814m")
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_wlxy5")
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tuemg"]
-
-[sub_resource type="Sky" id="Sky_i0g27"]
-sky_material = SubResource("PanoramaSkyMaterial_tuemg")
-process_mode = 1
-
-[sub_resource type="Environment" id="Environment_cdqbm"]
-background_mode = 2
-background_color = Color(0.254701, 0.47905457, 0.8693785, 1)
-background_energy_multiplier = 1.71
-sky = SubResource("Sky_i0g27")
-ambient_light_source = 3
-ambient_light_color = Color(0.19399983, 0.45820695, 0.88750297, 1)
-ambient_light_sky_contribution = 0.21
-ambient_light_energy = 2.37
-reflected_light_source = 1
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 1.47
-glow_strength = 0.42
-glow_bloom = 1.0
-glow_hdr_luminance_cap = 13.79
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.47151524, 0.564628, 0.6368409, 1)
-fog_sun_scatter = 0.03
-fog_density = 1.0
-fog_depth_curve = 0.46651667
-volumetric_fog_detail_spread = 0.93303305
-adjustment_enabled = true
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_imku0"]
-exposure_multiplier = 1.453
-dof_blur_near_enabled = true
-dof_blur_near_distance = 7.0
-dof_blur_near_transition = 4.0
-dof_blur_amount = 0.11
 
 [sub_resource type="Gradient" id="Gradient_imku0"]
 offsets = PackedFloat32Array(0, 0.11682243, 0.7383177, 1)
@@ -259,10 +221,10 @@ orientation = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1957260514]
 environment = SubResource("Environment_tereu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1038878194]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1038878194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0325336, 0.07601738, -4.780369)
 layers = 7
-gi_mode = 0
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_6iypd")
 
 [node name="Blur" type="Node3D" parent="." unique_id=927611246]
@@ -270,6 +232,7 @@ transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, 5.3290705e-15, -3
 
 [node name="Wire" type="Sprite3D" parent="Blur" unique_id=1304671346]
 transform = Transform3D(-0.6581382, -0.5338819, 4.0233581e-07, 3.2081895, -0.10952223, 4.932521e-07, 2.1997559e-07, -4.4878448e-08, -5.99, 12.63029, 1.5705569, 6.9947133)
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
@@ -279,6 +242,7 @@ script = ExtResource("3_2u1at")
 
 [node name="Wire2" type="Sprite3D" parent="Blur" unique_id=1494451841]
 transform = Transform3D(-3.402007, 0.37174422, 0, -4.9871554, -0.25358674, 0, 0, 0, 11.041, -1.4522152, 2.1491451, 7.4873977)
+visible = false
 material_override = SubResource("StandardMaterial3D_tereu")
 alpha_cut = 2
 texture = ExtResource("2_6l3rs")
@@ -289,6 +253,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 
 [node name="Concrete" type="Sprite3D" parent="Props" unique_id=87480587]
 transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, -0.5088693, 0.053242058, -2.0809162e-08, -2.2243379e-08, -3.264182e-08, 0.51, -0.67943263, -5.5038977, -0.40695095)
+visible = false
 alpha_cut = 1
 texture = ExtResource("4_dn2ro")
 
@@ -299,8 +264,23 @@ texture = ExtResource("5_hup21")
 
 [node name="Barrel" type="Sprite3D" parent="Props" unique_id=2122778628]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -2.8446589, -7.5703626, -0.14311346)
+visible = false
 alpha_cut = 1
 texture = ExtResource("6_4cwgp")
+
+[node name="alien_prop" type="MeshInstance3D" parent="Props" unique_id=1205116389]
+transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 2.7049847, -3.949669, 0.5660142)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_2u1at")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Props/alien_prop" unique_id=716364084]
+amount = 10
+lifetime = 2.0
+fixed_fps = 25
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_hup21")
+draw_pass_1 = SubResource("RibbonTrailMesh_bvueo")
 
 [node name="Trees" type="Node3D" parent="." unique_id=1425313640]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.1502953, 2.8026047, -3.024715)
@@ -485,7 +465,7 @@ texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush3" unique_id=1806484837]
 transform = Transform3D(0.5621695, -0.6106271, -2.6691353e-08, 0.6106271, 0.5621695, -1.1707234e-08, 2.669135e-08, -1.1707245e-08, 0.8299999, -0.2538538, -1.2865581e-08, 0.29433042)
-material_override = SubResource("StandardMaterial3D_tcnuu")
+material_override = ExtResource("13_2u1at")
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
@@ -512,7 +492,6 @@ texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush5" type="Sprite3D" parent="Bushes" unique_id=1032505986]
 transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -5.6581025, -14.466919, 0.09517035)
-material_override = SubResource("ShaderMaterial_imku0")
 extra_cull_margin = 16384.0
 visibility_range_end = 527.21
 modulate = Color(0.5395387, 0.74976796, 0.96386784, 1)
@@ -523,7 +502,7 @@ texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Bush" type="Sprite3D" parent="Bushes/Bush5" unique_id=349431717]
 transform = Transform3D(0.5621695, -0.6106271, -2.6691355e-08, 0.6106271, 0.5621695, -1.1707231e-08, 2.669135e-08, -1.1707241e-08, 0.8299999, -0.2538538, 0, 0.29433048)
-material_override = SubResource("StandardMaterial3D_3v7ru")
+material_override = ExtResource("13_2u1at")
 visibility_range_end = 527.21
 shaded = true
 double_sided = false
@@ -567,9 +546,9 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.025806, 6.6649723, 5.0663676)
-environment = SubResource("Environment_cdqbm")
-attributes = SubResource("CameraAttributesPractical_imku0")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.5270085, 6.903567, 6.459944)
+environment = ExtResource("17_0814m")
+attributes = ExtResource("2_bvueo")
 near = 0.034
 script = ExtResource("12_bnfrd")
 
@@ -600,31 +579,6 @@ lifetime = 3.0
 visibility_aabb = AABB(-10.525, -11.135, -4, 21.995, 21.695, 8)
 process_material = SubResource("ParticleProcessMaterial_tuemg")
 draw_pass_1 = SubResource("QuadMesh_i0g27")
-
-[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1007922545]
-transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 24.512426, 3.5928946, 5.461123)
-visible = false
-amount = 50
-lifetime = 3.0
-speed_scale = 0.6
-mesh = SubResource("QuadMesh_cdqbm")
-emission_shape = 3
-emission_box_extents = Vector3(11.04, 10.505, 1.135)
-particle_flag_rotate_y = true
-direction = Vector3(-3, 0, 0)
-spread = 23.14
-flatness = 0.23
-gravity = Vector3(0, -2.255, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-angular_velocity_min = -82.3
-angular_velocity_max = 51.41
-radial_accel_max = 0.5
-damping_max = 1.0
-angle_max = 216.0
-scale_amount_curve = SubResource("Curve_imku0")
-hue_variation_min = 0.27
-hue_variation_max = 0.27
 
 [node name="Fireflies3" type="GPUParticles3D" parent="." unique_id=1300963236]
 transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, -4.557986, 0.84593606, 15.8153105)

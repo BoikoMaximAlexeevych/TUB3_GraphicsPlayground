@@ -1,0 +1,8 @@
+[gd_resource type="CameraAttributesPractical" format=3 uid="uid://deoru3ci1a1jf"]
+
+[resource]
+exposure_multiplier = 1.453
+dof_blur_near_enabled = true
+dof_blur_near_distance = 7.0
+dof_blur_near_transition = 6.0
+dof_blur_amount = 0.11

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://raume4ja4wwu"]
+
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="1_512dn"]
+[ext_resource type="Texture2D" uid="uid://csb1bukio8oyg" path="res://textures/normal maps/bush_n.png" id="2_dm5i5"]
+
+[resource]
+transparency = 4
+albedo_texture = ExtResource("1_512dn")
+normal_enabled = true
+normal_texture = ExtResource("2_dm5i5")

@@ -1,0 +1,8 @@
+[gd_resource type="Sky" format=3 uid="uid://6hd5mf01okxi"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tuemg"]
+filter = false
+
+[resource]
+sky_material = SubResource("PanoramaSkyMaterial_tuemg")
+process_mode = 1
