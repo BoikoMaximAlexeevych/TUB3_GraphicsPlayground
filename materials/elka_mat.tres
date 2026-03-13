@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dshm1krp47k0f"]
+
+[ext_resource type="Texture2D" uid="uid://fturs5r02ts5" path="res://textures/elka_layer.png" id="1_lfj87"]
+
+[resource]
+transparency = 4
+albedo_texture = ExtResource("1_lfj87")

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://scripts/tree.gd" id="8_bvueo"]
 [ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://shaders/sway.gdshader" id="9_d7w74"]
 [ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="10_0814m"]
+[ext_resource type="Material" uid="uid://dshm1krp47k0f" path="res://materials/elka_mat.tres" id="11_6l3rs"]
 [ext_resource type="Material" uid="uid://cypa5a0if380" path="res://materials/leaf.tres" id="11_yagcb"]
 [ext_resource type="Script" uid="uid://cvqko4f1mnxam" path="res://scripts/camera_3d.gd" id="12_bnfrd"]
 [ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://textures/ground.png" id="13_05pwu"]
@@ -51,6 +52,11 @@ shader_parameter/sway_strength = 0.01
 shader_parameter/noise_scale = 5.0
 shader_parameter/darken = 0.0
 shader_parameter/time_offset = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2u1at"]
+material = ExtResource("11_6l3rs")
+size = Vector2(8, 8)
+orientation = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 material = ExtResource("11_yagcb")
@@ -264,7 +270,6 @@ transform = Transform3D(0.03394179, 0.79822636, 2.2243384e-08, 5.3290705e-15, -3
 
 [node name="Wire" type="Sprite3D" parent="Blur" unique_id=1304671346]
 transform = Transform3D(-0.6581382, -0.5338819, 4.0233581e-07, 3.2081895, -0.10952223, 4.932521e-07, 2.1997559e-07, -4.4878448e-08, -5.99, 12.63029, 1.5705569, 6.9947133)
-visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
@@ -274,7 +279,6 @@ script = ExtResource("3_2u1at")
 
 [node name="Wire2" type="Sprite3D" parent="Blur" unique_id=1494451841]
 transform = Transform3D(-3.402007, 0.37174422, 0, -4.9871554, -0.25358674, 0, 0, 0, 11.041, -1.4522152, 2.1491451, 7.4873977)
-visible = false
 material_override = SubResource("StandardMaterial3D_tereu")
 alpha_cut = 2
 texture = ExtResource("2_6l3rs")
@@ -365,6 +369,42 @@ cast_shadow = 2
 alpha_antialiasing_edge = 0.07
 texture = SubResource("CompressedTexture2D_imku0")
 script = ExtResource("8_bvueo")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees" unique_id=1054370268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.663501, -9.350302, -1.9462366)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA" unique_id=386401855]
+transform = Transform3D(0.6839056, -0.4340197, 0, 0.4340197, 0.6839056, 0, 0, 0, 0.81, 0, 0, 1.090143)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA" unique_id=2044278519]
+transform = Transform3D(0.6839056, -0.4340197, 1.7763568e-15, 0.4340197, 0.6839056, 3.5527137e-15, 0, -1.7763568e-15, 0.81000006, 0, 0, 1.1287045)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA/ELKA" unique_id=1476150675]
+transform = Transform3D(0.6839056, -0.4340197, -3.5527137e-15, 0.4340197, 0.6839056, 0, -3.5527137e-15, 8.881784e-16, 0.81000006, 0, 0, 1.1264658)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA/ELKA/ELKA" unique_id=69907463]
+transform = Transform3D(0.6839056, -0.43401968, 0, 0.43401968, 0.6839056, -4.440892e-16, 1.7763568e-15, -1.7763568e-15, 0.80999994, 0, 0, 1.1921701)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA/ELKA/ELKA/ELKA" unique_id=21630944]
+transform = Transform3D(0.68390566, -0.43401968, 1.7763568e-15, 0.43401968, 0.68390566, 0, -8.881784e-16, 0, 0.81, 0, 0, 1.2441673)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA/ELKA/ELKA/ELKA/ELKA" unique_id=2111271120]
+transform = Transform3D(0.6839056, -0.43401974, -8.881784e-16, 0.43401974, 0.6839056, 7.1054274e-15, 0, -3.5527137e-15, 0.81000006, 0, 0, 1.3065691)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA" type="MeshInstance3D" parent="Trees/ELKA/ELKA/ELKA/ELKA/ELKA/ELKA/ELKA" unique_id=333977838]
+transform = Transform3D(0.68390566, -0.43401974, -8.881784e-16, 0.43401974, 0.68390566, 3.5527137e-15, -1.7763568e-15, 0, 0.81000006, 0, 0, 1.194107)
+mesh = SubResource("PlaneMesh_2u1at")
+
+[node name="ELKA2" type="MeshInstance3D" parent="Trees/ELKA" unique_id=226140152]
+transform = Transform3D(-0.2333484, -0.85886467, 0, 0.85886467, -0.2333484, 0, 0, 0, 0.89, 0, 0, 0.3356635)
+mesh = SubResource("PlaneMesh_2u1at")
 
 [node name="Bushes" type="Node3D" parent="." unique_id=612706391]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.37674832, 0)
@@ -527,7 +567,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.3186803, 6.6649723, -1.9239078)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.025806, 6.6649723, 5.0663676)
 environment = SubResource("Environment_cdqbm")
 attributes = SubResource("CameraAttributesPractical_imku0")
 near = 0.034
@@ -554,7 +594,7 @@ shadow_enabled = true
 shadow_blur = 0.396
 
 [node name="Leaves" type="GPUParticles3D" parent="." unique_id=421851852]
-transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 8.104245, 2.982799, 5.461123)
+transform = Transform3D(1.0000002, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 6.922594, 2.982799, 5.461123)
 amount = 30
 lifetime = 3.0
 visibility_aabb = AABB(-10.525, -11.135, -4, 21.995, 21.695, 8)
