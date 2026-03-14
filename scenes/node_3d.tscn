@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://raume4ja4wwu" path="res://materials/bush_mat.tres" id="13_2u1at"]
 [ext_resource type="Texture2D" uid="uid://cc4ul8w5xr3a4" path="res://textures/ground.png" id="13_05pwu"]
 [ext_resource type="Environment" uid="uid://nbjteg7id1bq" path="res://materials/CameraEnvironment.tres" id="17_0814m"]
+[ext_resource type="PackedScene" uid="uid://d710pyb2gf3g" path="res://scenes/Projectiles_concepts.tscn" id="19_dvicb"]
 
 [sub_resource type="Environment" id="Environment_tereu"]
 ambient_light_source = 2
@@ -600,3 +601,6 @@ amount = 30
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_imku0")
 draw_pass_1 = SubResource("QuadMesh_wlxy5")
+
+[node name="Node3D" parent="." unique_id=475305119 instance=ExtResource("19_dvicb")]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0.98247147, -1.9695185, 6.0566316)

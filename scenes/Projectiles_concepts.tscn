@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://d710pyb2gf3g"]
+
+[ext_resource type="Shader" uid="uid://dcy56hclh7qo" path="res://scenes/fire_projectile.tres" id="1_ah5sh"]
+[ext_resource type="Shader" uid="uid://ol6p0m0cxrox" path="res://scenes/fire_trail.tres" id="2_5p105"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p105"]
+render_priority = 1
+shader = ExtResource("1_ah5sh")
+shader_parameter/Color = Color(1.353, 0.95143765, 0.32500005, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lty6t"]
+material = SubResource("ShaderMaterial_5p105")
+radial_segments = 70
+rings = 50
+
+[sub_resource type="Gradient" id="Gradient_5p105"]
+offsets = PackedFloat32Array(0, 0.2826087, 0.7521739, 1)
+colors = PackedColorArray(0.64, 0.23466666, 0.1536, 0, 0.640625, 0.2327075, 0.15264893, 1, 1, 0.9746704, 0.3515625, 1, 1, 0.97833335, 0.35000002, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5efyn"]
+gradient = SubResource("Gradient_5p105")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5efyn"]
+render_priority = 0
+shader = ExtResource("2_5p105")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_5efyn")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ah5sh"]
+material = SubResource("ShaderMaterial_5efyn")
+shape = 0
+size = 6.0
+section_length = 0.5
+
+[sub_resource type="Curve" id="Curve_5p105"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.8125, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5efyn"]
+curve = SubResource("Curve_5p105")
+
+[sub_resource type="Gradient" id="Gradient_y38kj"]
+offsets = PackedFloat32Array(0, 0.317757, 0.63084114, 0.9953271)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.97772217, 0.4296875, 1, 0.890625, 0.45259666, 0.066101074, 1, 0.80078125, 0.19112885, 0.028152466, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bwx0f"]
+gradient = SubResource("Gradient_y38kj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5p105"]
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 1.6
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 12.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_bwx0f")
+alpha_curve = SubResource("CurveTexture_5efyn")
+
+[sub_resource type="Gradient" id="Gradient_5efyn"]
+offsets = PackedFloat32Array(0.0091743115, 0.26605505)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y38kj"]
+gradient = SubResource("Gradient_5efyn")
+fill = 1
+fill_from = Vector2(0.4957265, 0.4871795)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5p105"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_y38kj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5efyn"]
+material = SubResource("StandardMaterial3D_5p105")
+size = Vector2(0.4, 1.5)
+subdivide_width = 5
+subdivide_depth = 5
+
+[node name="Node3D" type="Node3D" unique_id=475305119]
+
+[node name="FireProjectile" type="Node3D" parent="." unique_id=1143719671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5674114, 0)
+
+[node name="fireProjectile" type="MeshInstance3D" parent="FireProjectile" unique_id=563694534]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 8.234456, 0, 0)
+mesh = SubResource("SphereMesh_lty6t")
+
+[node name="Trail" type="MeshInstance3D" parent="FireProjectile/fireProjectile" unique_id=100220769]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, 1, -1, -4.371139e-08, 0, 4.371139e-08, -1, -4.371139e-08, 1.5412841e-07, 3.5260453, 0)
+mesh = SubResource("RibbonTrailMesh_ah5sh")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="FireProjectile/fireProjectile" unique_id=1690086643]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.15585268, 0.14882278, 0.2184112)
+cast_shadow = 0
+amount = 20
+lifetime = 0.4
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_5p105")
+draw_pass_1 = SubResource("QuadMesh_5efyn")
