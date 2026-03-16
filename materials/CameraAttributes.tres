@@ -3,6 +3,6 @@
 [resource]
 exposure_multiplier = 1.453
 dof_blur_near_enabled = true
-dof_blur_near_distance = 7.0
-dof_blur_near_transition = 6.0
+dof_blur_near_distance = 6.36
+dof_blur_near_transition = 3.0
 dof_blur_amount = 0.11
