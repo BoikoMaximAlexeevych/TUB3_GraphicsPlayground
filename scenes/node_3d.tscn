@@ -217,6 +217,46 @@ emission_energy_multiplier = 6.88
 material = SubResource("StandardMaterial3D_tuemg")
 orientation = 1
 
+[sub_resource type="Curve" id="Curve_dvicb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5190476, 0.3595506), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bvueo"]
+curve = SubResource("Curve_dvicb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dvicb"]
+particle_flag_rotate_y = true
+emission_shape_offset = Vector3(2.535, 2.465, 0.87)
+emission_shape_scale = Vector3(15.56, 2.705, 16.71)
+emission_shape = 3
+emission_box_extents = Vector3(1.005, 1, 1)
+gravity = Vector3(0, -0.08, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+alpha_curve = SubResource("CurveTexture_bvueo")
+hue_variation_min = -0.030000022
+hue_variation_max = 0.019999977
+turbulence_enabled = true
+turbulence_noise_scale = 1.2
+
+[sub_resource type="Gradient" id="Gradient_d7w74"]
+offsets = PackedFloat32Array(0, 0.39449543, 0.6055046, 0.88990825)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0814m"]
+gradient = SubResource("Gradient_d7w74")
+fill = 1
+fill_from = Vector2(0.48290598, 0.4871795)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yagcb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_0814m")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bvueo"]
+material = SubResource("StandardMaterial3D_yagcb")
+orientation = 1
+
 [node name="Node3D" type="Node3D" unique_id=1102209248]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1957260514]
@@ -711,7 +751,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.3587146, 7.935255, 2.0399356)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.569, 8.39, -2.51)
 environment = ExtResource("17_0814m")
 attributes = ExtResource("2_bvueo")
 fov = 80.0
@@ -769,3 +809,11 @@ draw_pass_1 = SubResource("QuadMesh_wlxy5")
 
 [node name="Node3D" parent="." unique_id=475305119 instance=ExtResource("19_dvicb")]
 transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.027910471, -1.1361107, -0.6593852)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=263351930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5935783, 3.580143, -0.8909044)
+amount = 70
+lifetime = 15.0
+visibility_aabb = AABB(-17.12, -3.665, -19.205, 41.25, 8.455, 41.27)
+process_material = SubResource("ParticleProcessMaterial_dvicb")
+draw_pass_1 = SubResource("QuadMesh_bvueo")

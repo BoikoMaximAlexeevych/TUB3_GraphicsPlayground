@@ -57,6 +57,7 @@ operator = 2
 [resource]
 flags/depth_prepass_alpha = true
 flags/unshaded = true
+flags/shadows_disabled = true
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ov3si")
 nodes/fragment/2/position = Vector2(-500, 460)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_8whhv")

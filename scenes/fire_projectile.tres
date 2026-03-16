@@ -62,6 +62,7 @@ input_name = "time"
 [resource]
 flags/depth_prepass_alpha = true
 flags/unshaded = true
+flags/shadows_disabled = true
 nodes/vertex/0/position = Vector2(400, 120)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_8ibis")
 nodes/vertex/2/position = Vector2(-760, 360)
