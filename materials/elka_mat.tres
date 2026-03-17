@@ -5,3 +5,10 @@
 [resource]
 transparency = 4
 albedo_texture = ExtResource("1_lfj87")
+subsurf_scatter_strength = 0.2
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight = Color(0.10317993, 0.5390625, 0.39603853, 1)
+refraction_scale = -0.09
+refraction_texture_channel = 3
+detail_blend_mode = 3

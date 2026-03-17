@@ -3,8 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="1_512dn"]
 [ext_resource type="Texture2D" uid="uid://csb1bukio8oyg" path="res://textures/normal maps/bush_n.png" id="2_dm5i5"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jxon6"]
+noise_type = 2
+frequency = 0.0395
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aj52t"]
+noise = SubResource("FastNoiseLite_jxon6")
+
 [resource]
+resource_local_to_scene = true
 transparency = 4
 albedo_texture = ExtResource("1_512dn")
+roughness_texture = SubResource("NoiseTexture2D_aj52t")
 normal_enabled = true
 normal_texture = ExtResource("2_dm5i5")

@@ -75,24 +75,32 @@ curve = SubResource("Curve_4cwgp")
 load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqbm"]
+resource_local_to_scene = true
 render_priority = 3
 shader = ExtResource("9_d7w74")
 shader_parameter/albedo_texture = ExtResource("10_0814m")
+shader_parameter/darken = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/sway_speed = 2.40000011074012
 shader_parameter/sway_strength = 0.01
 shader_parameter/noise_scale = 5.0
-shader_parameter/darken = 0.0
 shader_parameter/time_offset = 0.0
+shader_parameter/backlight_strength = 1.5
+shader_parameter/backlight_color = Color(1, 0.8, 0.6, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tereu"]
+resource_local_to_scene = true
 render_priority = 2
 shader = ExtResource("9_d7w74")
 shader_parameter/albedo_texture = SubResource("CompressedTexture2D_imku0")
+shader_parameter/darken = 0.166000007885
+shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/sway_speed = 2.56200011843512
 shader_parameter/sway_strength = 0.0170000008075
 shader_parameter/noise_scale = 5.0
-shader_parameter/darken = 0.2400000114
 shader_parameter/time_offset = 0.0
+shader_parameter/backlight_strength = 4.370000207575
+shader_parameter/backlight_color = Color(0.35047913, 0.87109375, 0.7734785, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2u1at"]
 lightmap_size_hint = Vector2i(42, 42)
@@ -310,7 +318,7 @@ alpha_cut = 1
 texture = ExtResource("6_4cwgp")
 
 [node name="alien_prop" type="MeshInstance3D" parent="Props" unique_id=1205116389]
-transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 2.1031382, 2.6111293, 0.5660144)
+transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 3.193, -5.886, 0.536)
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_2u1at")
 
@@ -322,6 +330,10 @@ trail_enabled = true
 trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_hup21")
 draw_pass_1 = SubResource("RibbonTrailMesh_bvueo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Props/alien_prop" unique_id=481075435]
+light_color = Color(0.51171875, 1, 0.95422363, 1)
+light_energy = 4.03
 
 [node name="Trees" type="Node3D" parent="." unique_id=1425313640]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.1502953, 2.8026047, -3.024715)
@@ -402,7 +414,7 @@ script = ExtResource("8_bvueo")
 
 [node name="Tree3" type="Sprite3D" parent="Trees" unique_id=504379628]
 transform = Transform3D(1.1869792, 1.419007, 6.202677e-08, -1.419007, 1.1869792, -2.8981567e-08, -6.202677e-08, -2.8981564e-08, 1.85, -13.077077, -15.470775, 2.0887992)
-modulate = Color(0.38928655, 0.38928664, 0.38928658, 1)
+modulate = Color(0.6171875, 0.6171875, 0.6171875, 1)
 alpha_cut = 1
 texture = SubResource("CompressedTexture2D_imku0")
 
@@ -751,7 +763,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.569, 8.39, -2.51)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.7684832, 7.934456, 6.60948)
 environment = ExtResource("17_0814m")
 attributes = ExtResource("2_bvueo")
 fov = 80.0
