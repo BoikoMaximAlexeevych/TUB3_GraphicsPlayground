@@ -1,0 +1,79 @@
+[gd_resource type="VisualShader" format=3 uid="uid://cg20no2q2s2h0"]
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_hivwu"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_b43s8"]
+parameter_name = "Biome3Colour"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yo5sy"]
+parameter_name = "Biome3Threshold"
+hint = 1
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_nykds"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_nykds"]
+parameter_name = "Biome4Colour"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b43s8"]
+noise_type = 3
+frequency = 0.0071
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hivwu"]
+width = 1061
+height = 856
+noise = SubResource("FastNoiseLite_b43s8")
+seamless = true
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yo5sy"]
+texture = SubResource("NoiseTexture2D_hivwu")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_b43s8"]
+parameter_name = "Biome1Threshold"
+hint = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hivwu"]
+parameter_name = "Biome2Threshold"
+hint = 1
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_b43s8"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_b43s8"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_hivwu"]
+parameter_name = "Biome1Colour"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_yo5sy"]
+parameter_name = "Biome2Colour"
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(320, -100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yo5sy")
+nodes/fragment/2/position = Vector2(-900, -500)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_b43s8")
+nodes/fragment/3/position = Vector2(-1400, 40)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_hivwu")
+nodes/fragment/4/position = Vector2(-1400, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDecompose_b43s8")
+nodes/fragment/5/position = Vector2(-740, -180)
+nodes/fragment/7/node = SubResource("VisualShaderNodeIf_b43s8")
+nodes/fragment/7/position = Vector2(60, 0)
+nodes/fragment/8/node = SubResource("VisualShaderNodeColorParameter_hivwu")
+nodes/fragment/8/position = Vector2(-1220, 660)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_yo5sy")
+nodes/fragment/9/position = Vector2(-1220, 880)
+nodes/fragment/10/node = SubResource("VisualShaderNodeIf_hivwu")
+nodes/fragment/10/position = Vector2(-200, 420)
+nodes/fragment/11/node = SubResource("VisualShaderNodeColorParameter_b43s8")
+nodes/fragment/11/position = Vector2(-1220, 1100)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_yo5sy")
+nodes/fragment/12/position = Vector2(-1420, 620)
+nodes/fragment/13/node = SubResource("VisualShaderNodeIf_nykds")
+nodes/fragment/13/position = Vector2(-420, 780)
+nodes/fragment/14/node = SubResource("VisualShaderNodeColorParameter_nykds")
+nodes/fragment/14/position = Vector2(-980, 1380)
+nodes/fragment/connections = PackedInt32Array(2, 0, 5, 0, 5, 0, 7, 0, 3, 0, 7, 1, 8, 0, 7, 4, 5, 0, 10, 0, 4, 0, 10, 1, 7, 0, 0, 0, 10, 0, 7, 3, 10, 0, 7, 5, 9, 0, 10, 4, 12, 0, 13, 1, 5, 0, 13, 0, 13, 0, 10, 3, 13, 0, 10, 5, 11, 0, 13, 4, 14, 0, 13, 3, 14, 0, 13, 5)

@@ -318,7 +318,7 @@ alpha_cut = 1
 texture = ExtResource("6_4cwgp")
 
 [node name="alien_prop" type="MeshInstance3D" parent="Props" unique_id=1205116389]
-transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 3.193, -5.886, 0.536)
+transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 3.883, -6.736, 0.536)
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_2u1at")
 
@@ -334,6 +334,8 @@ draw_pass_1 = SubResource("RibbonTrailMesh_bvueo")
 [node name="OmniLight3D" type="OmniLight3D" parent="Props/alien_prop" unique_id=481075435]
 light_color = Color(0.51171875, 1, 0.95422363, 1)
 light_energy = 4.03
+light_indirect_energy = 1.364
+light_volumetric_fog_energy = 0.636
 
 [node name="Trees" type="Node3D" parent="." unique_id=1425313640]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.1502953, 2.8026047, -3.024715)
@@ -763,7 +765,7 @@ alpha_cut = 2
 texture = SubResource("CompressedTexture2D_imku0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1838905069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.7684832, 7.934456, 6.60948)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.4640582, 7.934456, 1.1265821)
 environment = ExtResource("17_0814m")
 attributes = ExtResource("2_bvueo")
 fov = 80.0
@@ -821,6 +823,7 @@ draw_pass_1 = SubResource("QuadMesh_wlxy5")
 
 [node name="Node3D" parent="." unique_id=475305119 instance=ExtResource("19_dvicb")]
 transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.027910471, -1.1361107, -0.6593852)
+visible = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=263351930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5935783, 3.580143, -0.8909044)
