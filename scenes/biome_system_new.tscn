@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhmn5a05qoflo"]
 
-[ext_resource type="Shader" uid="uid://cg20no2q2s2h0" path="res://biome_system_new.tres" id="1_b15rd"]
-[ext_resource type="Script" uid="uid://ddeo5ttif6k7r" path="res://biome_root.gd" id="1_deo4x"]
+[ext_resource type="Shader" uid="uid://cg20no2q2s2h0" path="res://scenes/biome_system_new.tres" id="1_b15rd"]
+[ext_resource type="Script" uid="uid://ddeo5ttif6k7r" path="res://scripts/biome_root.gd" id="1_deo4x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b15rd"]
 shader = ExtResource("1_b15rd")

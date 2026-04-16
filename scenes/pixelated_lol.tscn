@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs03mg18h3fey"]
 
-[ext_resource type="PackedScene" uid="uid://bpwf8n63ks2t6" path="res://scenes/node_3d.tscn" id="1_47f43"]
+[ext_resource type="PackedScene" uid="uid://djeyjtj7jay0w" path="res://scenes/city_scene.tscn" id="1_47f43"]
 
 [node name="Node3D" type="Node3D" unique_id=139154023]
 
@@ -19,4 +19,4 @@ handle_input_locally = false
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="World" parent="SubViewportContainer/SubViewport" unique_id=1102209248 instance=ExtResource("1_47f43")]
+[node name="City_Scene" parent="SubViewportContainer/SubViewport" unique_id=1820393311 instance=ExtResource("1_47f43")]

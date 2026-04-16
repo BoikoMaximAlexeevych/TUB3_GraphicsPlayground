@@ -1,0 +1,424 @@
+[gd_scene format=3 uid="uid://djeyjtj7jay0w"]
+
+[ext_resource type="Material" uid="uid://cy366lepce6ss" path="res://materials/ground_material.tres" id="1_6kq0r"]
+[ext_resource type="Script" uid="uid://dlpdscuhvd3xp" path="res://scripts/house.gd" id="2_6kq0r"]
+[ext_resource type="Texture2D" uid="uid://dkvbv1ky82f2w" path="res://textures/brick wall.png" id="2_27v7a"]
+[ext_resource type="Texture2D" uid="uid://drtd66i32ux3u" path="res://textures/quick_roof.png" id="3_2o0ua"]
+[ext_resource type="CameraAttributesPractical" uid="uid://b2lfm707nlytd" path="res://materials/CamAttrs_City.tres" id="4_8bd4n"]
+[ext_resource type="Texture2D" uid="uid://cqlal1evc88yn" path="res://textures/wooden floor.png" id="5_2o0ua"]
+[ext_resource type="Script" uid="uid://cfq87dbboyoa5" path="res://scripts/character.gd" id="5_27v7a"]
+[ext_resource type="PackedScene" uid="uid://cs56348dynjaa" path="res://scenes/camera_capture_area.tscn" id="6_vu44f"]
+[ext_resource type="Script" uid="uid://b6h2stlnk1hpf" path="res://scripts/camera_for_char.gd" id="7_27v7a"]
+[ext_resource type="Shader" uid="uid://bdp5qn84sj7r1" path="res://shaders/sway.gdshader" id="10_2wia3"]
+[ext_resource type="Texture2D" uid="uid://d2jpe3eqcdlqo" path="res://textures/bush.png" id="11_4yd3k"]
+[ext_resource type="Script" uid="uid://b2ods3uh2bpa4" path="res://scripts/tree.gd" id="12_picbe"]
+[ext_resource type="Material" uid="uid://dshm1krp47k0f" path="res://materials/elka_mat.tres" id="13_4yd3k"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dbc24"]
+lightmap_size_hint = Vector2i(502, 502)
+material = ExtResource("1_6kq0r")
+add_uv2 = true
+size = Vector2(100, 100)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vu44f"]
+size = Vector2(5, 2)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vu44f"]
+size = Vector3(5, 1.1545439, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge72k"]
+cull_mode = 2
+albedo_texture = ExtResource("2_27v7a")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_l1vpq"]
+material = SubResource("StandardMaterial3D_ge72k")
+size = Vector2(10, 10)
+subdivide_width = 4
+subdivide_depth = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6y3u"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("3_2o0ua")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mjvlr"]
+material = SubResource("StandardMaterial3D_u6y3u")
+size = Vector2(12, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o0ua"]
+size = Vector3(9.881897, 10.672974, 10.220032)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu44f"]
+albedo_texture = ExtResource("5_2o0ua")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sfi0p"]
+material = SubResource("StandardMaterial3D_vu44f")
+size = Vector2(10, 10)
+orientation = 1
+
+[sub_resource type="Environment" id="Environment_o4esa"]
+background_mode = 1
+background_color = Color(0.83051443, 0.83984375, 0.54130554, 1)
+background_energy_multiplier = 1.3
+ambient_light_source = 2
+ambient_light_color = Color(0.33984375, 0.81433105, 1, 1)
+ambient_light_energy = 2.27
+tonemap_mode = 4
+ssil_enabled = true
+ssil_radius = 2.35
+ssil_intensity = 1.86
+ssil_sharpness = 0.84
+ssil_normal_rejection = 0.65
+sdfgi_read_sky_light = false
+fog_mode = 1
+fog_light_color = Color(0.15319824, 0.98046875, 0.86413383, 1)
+fog_density = 0.4571
+fog_depth_curve = 1.0717744
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2o0ua"]
+albedo_color = Color(0.7734375, 0.066467285, 0.066467285, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2o0ua"]
+material = SubResource("StandardMaterial3D_2o0ua")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kq0r"]
+radius = 0.5449219
+height = 2.2321167
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu44f"]
+radius = 0.5839844
+height = 2.3642578
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdm01"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("10_2wia3")
+shader_parameter/albedo_texture = ExtResource("11_4yd3k")
+shader_parameter/darken = 0.5650000268375
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/sway_speed = 1.16200005193512
+shader_parameter/sway_strength = 0.022000001045
+shader_parameter/noise_scale = 6.2530002495175
+shader_parameter/time_offset = 0.0
+shader_parameter/backlight_strength = 1.5
+shader_parameter/backlight_color = Color(1, 0.8, 0.6, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihdlj"]
+load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct7dq"]
+resource_local_to_scene = true
+render_priority = 3
+shader = ExtResource("10_2wia3")
+shader_parameter/albedo_texture = ExtResource("11_4yd3k")
+shader_parameter/darken = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/sway_speed = 2.40000011074012
+shader_parameter/sway_strength = 0.01
+shader_parameter/noise_scale = 5.0
+shader_parameter/time_offset = 0.0
+shader_parameter/backlight_strength = 1.5
+shader_parameter/backlight_color = Color(1, 0.8, 0.6, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_imku0"]
+load_path = "res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmvai"]
+resource_local_to_scene = true
+render_priority = 2
+shader = ExtResource("10_2wia3")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_imku0")
+shader_parameter/darken = 0.166000007885
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/sway_speed = 2.56200011843512
+shader_parameter/sway_strength = 0.0170000008075
+shader_parameter/noise_scale = 5.0
+shader_parameter/time_offset = 0.0
+shader_parameter/backlight_strength = 4.370000207575
+shader_parameter/backlight_color = Color(0.35047913, 0.87109375, 0.7734785, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_picbe"]
+lightmap_size_hint = Vector2i(42, 42)
+material = ExtResource("13_4yd3k")
+add_uv2 = true
+size = Vector2(8, 8)
+orientation = 2
+
+[node name="City_Scene" type="Node3D" unique_id=1820393311]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=439115366]
+transform = Transform3D(1.4249451, -0.009508032, 0.008143767, 0.0094381515, 1.424917, 0.01219662, -0.008224654, -0.0121422205, 1.4249246, 1.0325336, 0.07601738, -4.780369)
+layers = 7
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_dbc24")
+
+[node name="House" type="Node3D" parent="." unique_id=462664315]
+transform = Transform3D(1.4, 0, 0, 0, 1.09, 0, 0, 0, 2.24, 0, 0, 0)
+script = ExtResource("2_6kq0r")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="House" unique_id=1643099840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014561756, 1.3648531, -10.98264)
+mesh = SubResource("QuadMesh_vu44f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="House/MeshInstance3D6" unique_id=1047452388]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/MeshInstance3D6/StaticBody3D" unique_id=1797324926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20910156, 0)
+shape = SubResource("BoxShape3D_vu44f")
+
+[node name="Camera Capture Area2" parent="House" unique_id=1509931940 node_paths=PackedStringArray("CapturePosNode") instance=ExtResource("6_vu44f")]
+transform = Transform3D(7.504, 0, 0, 0, 2.627, 0, 0, 0, 2.136, 0.04882421, 2.1873264e-07, -10.864019)
+visible = false
+CapturePosNode = NodePath("Node3D")
+toolbox = true
+
+[node name="Node3D" type="Node3D" parent="House/Camera Capture Area2" unique_id=1387796907]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, 0, 1.9197932, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="House" unique_id=896106939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 5.087, -1.9569359)
+mesh = SubResource("QuadMesh_l1vpq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="House" unique_id=1334897347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 5.087, -11.978727)
+mesh = SubResource("QuadMesh_l1vpq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="House" unique_id=1675445958]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9612513, 5.087, -6.979424)
+mesh = SubResource("QuadMesh_l1vpq")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="House" unique_id=1039270852]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9351873, 5.087, -6.979424)
+mesh = SubResource("QuadMesh_l1vpq")
+
+[node name="Roof" type="MeshInstance3D" parent="House" unique_id=1566649208]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2776575, 10.510629, -6.903669)
+mesh = SubResource("QuadMesh_mjvlr")
+
+[node name="Area3D" type="Area3D" parent="House" unique_id=1376860776]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Area3D" unique_id=2054824549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00057986804, 4.836487, -6.982696)
+shape = SubResource("BoxShape3D_2o0ua")
+debug_color = Color(0.7, 0, 0, 1)
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="House" unique_id=1293081584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21026462, -6.983528)
+mesh = SubResource("QuadMesh_sfi0p")
+
+[node name="CameraPosToDictate" type="Node3D" parent="House" unique_id=1708681810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.864905, -6.7134433)
+
+[node name="Camera Capture Area" parent="House" unique_id=1913786974 node_paths=PackedStringArray("CapturePosNode") instance=ExtResource("6_vu44f")]
+transform = Transform3D(9.57, 0, 0, 0, 3.83, 0, 0, 0, 9.695, 0, 2.2698905, -6.862157)
+visible = false
+CapturePosNode = NodePath("../CameraPosToDictate")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=97381417]
+environment = SubResource("Environment_o4esa")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2117170356 node_paths=PackedStringArray("Character")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14.300924, 6.164198)
+attributes = ExtResource("4_8bd4n")
+fov = 80.0
+near = 0.034
+script = ExtResource("7_27v7a")
+Character = NodePath("../CharacterBody3D")
+
+[node name="Camera Capture Area3" parent="." unique_id=529338720 node_paths=PackedStringArray("CapturePosNode") instance=ExtResource("6_vu44f")]
+transform = Transform3D(10.060001, 0, 0, 0, 5.3950005, 0, 0, 0, 9.03, -30.122225, 2.8676414, -12.6821575)
+CapturePosNode = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Camera Capture Area3" unique_id=1792848221]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 2.0467324, 0)
+
+[node name="Camera Capture Area2" parent="." unique_id=983549364 node_paths=PackedStringArray("CapturePosNode") instance=ExtResource("6_vu44f")]
+transform = Transform3D(7.65, 0, 0, 0, 5.36, 0, 0, 0, 8.755, -21.248814, 2.8676414, -17.121584)
+CapturePosNode = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Camera Capture Area2" unique_id=1421890668]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 2.0467324, 0)
+
+[node name="Camera Capture Area" parent="." unique_id=1824716721 node_paths=PackedStringArray("CapturePosNode") instance=ExtResource("6_vu44f")]
+transform = Transform3D(10.89, 0, 0, 0, 4.93, 0, 0, 0, 12.645, -30.764547, 2.5505471, -25.176748)
+CapturePosNode = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Camera Capture Area" unique_id=1325530822]
+transform = Transform3D(0.09182736, 0, 0, 0, 0.20283976, 0, 0, 0, 0.07908264, -0.05128026, 1.6753643, 1.9073486e-05)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1431133464 node_paths=PackedStringArray("Camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1699245, 6.164198)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_27v7a")
+Camera = NodePath("../Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=2087256343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0599706, 0)
+mesh = SubResource("CapsuleMesh_2o0ua")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1216960928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.021979, 0)
+shape = SubResource("CapsuleShape3D_6kq0r")
+debug_color = Color(0.6666667, 0.7019608, 0, 1)
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" unique_id=1723917872]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=2134919732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99432933, 0)
+shape = SubResource("CapsuleShape3D_vu44f")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Tree2" type="Sprite3D" parent="." unique_id=1886072977]
+transform = Transform3D(0.25691232, -1.4422971, 0, -6.304481e-08, -1.1229995e-08, 1.465, -1.4422971, -0.25691232, -6.403719e-08, 12.252219, 8.84933, 2.9698167)
+material_override = SubResource("ShaderMaterial_jdm01")
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree3" type="Sprite3D" parent="Tree2" unique_id=118947341]
+transform = Transform3D(-0.3501529, -0.28415534, -1.2550892e-07, 0.263129, -0.3781332, -1.6787668e-07, 1.5451729e-10, -6.781382e-08, 1.4619999, -1.1782188, 3.0896397, -0.44151807)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree2" type="Sprite3D" parent="Tree2/Tree3" unique_id=1014893284]
+transform = Transform3D(0.22444662, 0.7694094, 6.1623716e-08, -0.57472837, 0.3004748, -4.015042e-08, -2.867663e-08, -2.7466724e-08, 1.287, -0.29003716, -0.34856033, 0.2657175)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree2" type="Sprite3D" parent="Tree2/Tree3/Tree2" unique_id=2006495924]
+transform = Transform3D(0.6032923, 0.17314492, 0, -0.12933466, 0.8076489, 0, 0, 0, 1.2869998, -0.1, -0.226, 0.181)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree2" type="Sprite3D" parent="Tree2" unique_id=992272644]
+transform = Transform3D(-0.1817722, 0.6347216, 4.645085e-08, -0.4749438, -0.24292299, -7.061944e-08, -2.3690088e-08, -4.4024283e-08, 1.0593798, 3.7584815, 0.12919903, -0.87968636)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree2" type="Sprite3D" parent="Tree2/Tree2" unique_id=1010856725]
+transform = Transform3D(0.22444662, 0.7694094, 6.1623716e-08, -0.57472837, 0.3004748, -4.015042e-08, -2.867663e-08, -2.7466724e-08, 1.287, -0.29003716, -0.34856033, 0.2657175)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree2" type="Sprite3D" parent="Tree2/Tree2/Tree2" unique_id=747324605]
+transform = Transform3D(0.6032923, 0.17314492, 0, -0.12933466, 0.8076489, 0, 0, 0, 1.2869998, -0.1, -0.226, 0.181)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree" type="Sprite3D" parent="Tree2" unique_id=85464303]
+transform = Transform3D(0.69552916, 0.6323281, 2.7639947e-08, -0.6323281, 0.69552916, -1.0686149e-08, -2.7639938e-08, -1.0686159e-08, 0.94, -0.41041398, -0.25716496, 0.181)
+material_override = SubResource("ShaderMaterial_cmvai")
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree" type="Sprite3D" parent="Tree2/Tree" unique_id=1249045424]
+transform = Transform3D(0.5660454, 0.42670137, 2.2735342e-08, -0.34902388, 0.6920224, -6.4458745e-09, -1.5256308e-08, -5.2881055e-09, 0.991, -0.053, 0.072, 0.625)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree" type="Sprite3D" parent="Tree2/Tree/Tree" unique_id=1741818562]
+transform = Transform3D(-0.8280039, 0.9477008, 0, -0.7748325, -1.012735, 0, 0, 0, 1.691, -0.053, 0.072, -0.305)
+material_override = SubResource("ShaderMaterial_ct7dq")
+alpha_antialiasing_edge = 0.07
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="Tree4" type="Sprite3D" parent="Tree2" unique_id=701334759]
+transform = Transform3D(0.16391325, 1.2795435, 7.1054274e-15, -1.2795435, 0.16391325, -2.6645353e-15, -2.220446e-16, -7.1054274e-15, 1.2899996, -0.38497496, -0.26765156, -0.94777393)
+material_override = SubResource("ShaderMaterial_cmvai")
+texture = SubResource("CompressedTexture2D_ihdlj")
+script = ExtResource("12_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="." unique_id=2047754070]
+transform = Transform3D(1.9595171, -0.88475585, 0, -3.867391e-08, -8.565321e-08, 2.693, -0.88475585, -1.9595171, -1.1771477e-07, -15.389438, 0.4650364, 2.8037128)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2" unique_id=724722315]
+transform = Transform3D(0.7261877, -0.6202229, 0, 0.6202229, 0.7261877, 0, 0, 0, 0.95500004, 0, 0, 0.16591907)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2" unique_id=722094981]
+transform = Transform3D(0.7054682, 0.59828055, 0, -0.59828055, 0.7054682, 0, 0, 0, 0.925, 0, 0, 0.3477496)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2" unique_id=1617986522]
+transform = Transform3D(0.8887207, 0.25651607, 0, -0.25651607, 0.8887207, 0, 0, 0, 0.925, 0, 0, 0.331)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2" unique_id=2029149571]
+transform = Transform3D(0.8423824, -0.38212162, 0, 0.38212162, 0.8423824, 0, 0, 0, 0.925, 0, 0, 0.366)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=2014346680]
+transform = Transform3D(0.915543, -0.13193177, 0, 0.13193177, 0.915543, 0, 0, 0, 0.925, 0, 0, 0.276)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1709594019]
+transform = Transform3D(0.702326, -0.6019662, 0, 0.6019662, 0.702326, 0, 0, 0, 0.925, 0, 0, 0.431)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1548794943]
+transform = Transform3D(0.7827287, 0.4929106, 0, -0.4929106, 0.7827287, 0, 0, 0, 0.925, 0, 0, 0.471)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=203728364]
+transform = Transform3D(0.8887207, 0.25651607, 0, -0.25651607, 0.8887207, 0, 0, 0, 0.925, 0, 0, 0.436)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=601792711]
+transform = Transform3D(0.702326, -0.6019662, 0, 0.6019662, 0.702326, 0, 0, 0, 0.925, 0, 0, 0.411)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1650789109]
+transform = Transform3D(0.702326, -0.6019662, 0, 0.6019662, 0.702326, 0, 0, 0, 0.925, 0, 0, 0.371)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1971943681]
+transform = Transform3D(0.39384586, -0.836965, 0, 0.836965, 0.39384586, 0, 0, 0, 0.925, 0, 0, 0.426)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1795697852]
+transform = Transform3D(0.915543, -0.13193177, 0, 0.13193177, 0.915543, 0, 0, 0, 0.925, 0, 0, 0.276)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1750246005]
+transform = Transform3D(0.39384586, -0.836965, 0, 0.836965, 0.39384586, 0, 0, 0, 0.925, 0, 0, 0.466)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1475551675]
+transform = Transform3D(0.14470191, -0.91361177, 0, 0.91361177, 0.14470191, 0, 0, 0, 0.925, 0, 0, 0.351)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1772334884]
+transform = Transform3D(0.702326, -0.6019662, 0, 0.6019662, 0.702326, 0, 0, 0, 0.925, 0, 0, 0.456)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=1632590044]
+transform = Transform3D(0.61171347, -0.6938527, 0, 0.6938527, 0.61171347, 0, 0, 0, 0.925, 0, 0, 0.526)
+mesh = SubResource("PlaneMesh_picbe")
+
+[node name="ELKA2" type="MeshInstance3D" parent="ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2/ELKA2" unique_id=649844301]
+transform = Transform3D(-0.8611712, 0.15494907, 0, -0.15494907, -0.8611712, 0, 0, 0, 0.875, 0, 0, 0.571)
+mesh = SubResource("PlaneMesh_picbe")
+
+[connection signal="body_shape_entered" from="House/Area3D" to="House" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="House/Area3D" to="House" method="_on_area_3d_body_shape_exited"]

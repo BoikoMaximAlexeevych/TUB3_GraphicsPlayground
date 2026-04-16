@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cs56348dynjaa"]
+
+[ext_resource type="Script" uid="uid://c14pcimqtskd3" path="res://scripts/camera_capture_area.gd" id="1_xyq20"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cmm2k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyq20"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.11372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wayi2"]
+material = SubResource("StandardMaterial3D_xyq20")
+
+[node name="Camera Capture Area" type="Node3D" unique_id=1509931940]
+script = ExtResource("1_xyq20")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2080345220]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1054716909]
+shape = SubResource("BoxShape3D_cmm2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=13684559]
+mesh = SubResource("BoxMesh_wayi2")
+
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]
